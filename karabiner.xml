@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<root>
+
+<!--     This is what you need to know about key transformations that occur    -->
+<!-- when `Karabiner` aka `KeyRemap4macbook` gets in the middle. Keys are      -->
+<!-- effectively of two types:                                                 -->
+<!--                                                                           -->
+<!-- [osx] this is what OS receives and essentially what you believe you       -->
+<!-- press, as in when sending Cmd-F (OSX find) it is the meaning not the      -->
+<!-- physical keys you have in mind, the actual physical keys pressed and      -->
+<!-- thus bytes generated can have different names spelled out on your         -->
+<!-- physical keyboard. You can think of [osx] as essence, meaning.            -->
+<!--                                                                           -->
+<!-- [raw] is the actual raw keycode (byte) being sent - mapping between       -->
+<!-- the physical key you pressed and the byte (number) generated. So as to    -->
+<!-- avoid dealing with hexadecimal constants Karabiner gives them             -->
+<!-- names. E.g.: [ENTER] is 0x4c. Everywhere you see a Karabiner name you     -->
+<!-- should mentally think of it as a corresponding number or a physical       -->
+<!-- key. Think of names as placeholders or representations, not               -->
+<!-- meaning. These may later be mapped to something entirely different and    -->
+<!-- passed to your OS for further interpretation.                             -->
+<!--                                                                           -->
+<!-- NB: If you don't do anything fancy with your layout and you have a        -->
+<!-- standard QWERTY En keyboard chances are [osx] and [raw] will map onto     -->
+<!-- each other perfectly. Since this is the default we get really confused    -->
+<!-- when different layouts get into play, or seperate keys are re-mapped      -->
+<!-- to something different. If you remember one thing about Karabiner make    -->
+<!-- it this: it only deals with [raw] keys, which are referenced by their     -->
+<!-- names. This last point is the source of confusion, so always think:       -->
+<!-- name refers to a constant, not the meaning my mind is trying to attach    -->
+<!-- to it. Don't let your mind trick you. Who knew that phylosophy can be     -->
+<!-- so useful.                                                                -->
+<!--                                                                           -->
+<!-- Transformations:                                                          -->
+<!--                                                                           -->
+<!-- * [osx] -(1)- [raw] -(2)- [raw] -(3)- [osx]                               -->
+<!--                                                                           -->
+<!-- * [osx] -(in your head)- [raw] -(Karabiner)- [raw] -(in your head)- [osx] -->
+<!--                                                                           -->
+<!-- * Since -(2)- aka Karabiner only deals with [raw] this is what we need    -->
+<!-- to provide it. Unfortunately this is where you'll need to do the          -->
+<!-- mapping in your head: keys you want to send -(1)- and keys you want       -->
+<!-- received by OS -(3)- need to be mapped to physical [raw] keys on the      -->
+<!-- keyboard.                                                                 -->
+<!--                                                                           -->
+<!-- __Example__                                                               -->
+<!--                                                                           -->
+<!-- * My physical keyboard is a standard Macbook Air American-English         -->
+<!-- QWERTY                                                                    -->
+<!--                                                                           -->
+<!-- * However, I chose Dvorak layout in OS X System Prefs, so having          -->
+<!-- received a physical signal OS will preform transformation to              -->
+<!-- Dvorak. I.e. physical signal marked semicolon `;` on my keyboard will     -->
+<!-- translate into letter `s` by OSX.                                         -->
+<!--                                                                           -->
+<!-- * Now let's remap something with Karabiner. I want to be able to open     -->
+<!-- a search box (OS X find that's envoked with Command-f) by typing          -->
+<!-- Control-s on my Dvorak layout that is: [osx:C-s] to [osx: CMD-f]          -->
+<!--                                                                           -->
+<!-- * put differently [osx:C-s] [raw:???] -(Karabiner)- [raw:???] [osx:CMD-f] -->
+<!--                                                                           -->
+<!-- * simple but easily corruptable way to replace those ??? is to look at    -->
+<!-- the names spelled out on the keys you press to get at C-s and CMD-f       -->
+<!-- when typing Dvorak. Most of the time this is what you want and you'll     -->
+<!-- arrive at the right answer                                                -->
+<!--                                                                           -->
+<!-- * a bullet-proof way however is to use Karabiner's EventViewer to see     -->
+<!-- the KeyCodes generated. My advice go with phisical experiment no          -->
+<!-- guessing and hoping, it's not theoretical physics.                        -->
+<!--                                                                           -->
+<!-- * [osx:C-s] == [raw:C-SEMICOLON] to [raw:CMD-Y] == [osx:CMD-f]            -->
+
+
+    <item>
+        <name>Switch RU to Dvorak while any of CONTROL_L or COMMAND_L is pressed</name>
+        <identifier>private.modifier_to_dvorak_layout</identifier>
+        <block>
+            <inputsource_only>RUSSIAN</inputsource_only>
+
+            <autogen>
+                --KeyToKey--
+                KeyCode::CONTROL_L,
+                KeyCode::CONTROL_L,
+
+                Option::KEYTOKEY_BEFORE_KEYDOWN,
+                KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+
+                Option::KEYTOKEY_AFTER_KEYUP,
+                KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+            </autogen>
+
+            <autogen>
+                --KeyToKey--
+                KeyCode::COMMAND_L,
+                KeyCode::COMMAND_L,
+
+                Option::KEYTOKEY_BEFORE_KEYDOWN,
+                KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+
+                Option::KEYTOKEY_AFTER_KEYUP,
+                KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+            </autogen>
+
+
+        </block>
+    </item>
+
+    <item>
+        <name>Emacs like forward/backward [kill] word, undo.</name>
+        <identifier>private.emacs_forward_backward_word_undo</identifier>
+
+        <not>EMACS</not>
+        <uielementrole_only>AXTextArea, AXTextField, AXWebArea</uielementrole_only>
+
+        <autogen>
+            <!-- M-f forward-word -->
+            <!-- [osx::CMD-f] == [raw::CMD-Y] to [raw::OPT-CURSOR_RIGHT] == [osx::OPT-right] -->
+            --KeyToKey--
+            KeyCode::Y, ModifierFlag::COMMAND_L,
+            KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L
+        </autogen>
+
+        <autogen>
+            <!-- M-b backward-word -->
+            <!-- [osx::CMD-b] == [raw::CMD-N] to [raw::OPT-CURSOR_LEFT] == [osx::OPT-left] -->
+            --KeyToKey--
+            KeyCode::N, ModifierFlag::COMMAND_L,
+            KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L
+        </autogen>
+
+
+        <autogen>
+            <!-- M-d kill-word -->
+            <!-- [osx::CMD-d] == [raw::CMD-H] to [raw::OPT-FORWARD_DELETE] == [osx::OPT-FN-backspace] -->
+            --KeyToKey--
+            KeyCode::H, ModifierFlag::COMMAND_L,
+            KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L
+        </autogen>
+
+        <autogen>
+            <!-- CMD-del backward-kill-word -->
+            <!-- [osx::CMD-backspace] == [raw::CMD-DELETE] to [raw::OPT-DELETE] == [osx::OPT-backspace] -->
+            --KeyToKey--
+            KeyCode::DELETE, ModifierFlag::COMMAND_L,
+            KeyCode::DELETE, ModifierFlag::OPTION_L
+        </autogen>
+
+        <autogen>
+            <!-- C-/ undo -->
+            <!-- [osx::C-/] == [raw::C-BRACKET_LEFT] to [raw::CMD-SLASH] == [osx::CMD-z] -->
+            --KeyToKey--
+            KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L,
+            KeyCode::SLASH, ModifierFlag::COMMAND_L
+        </autogen>
+
+
+    </item>
+
+
+    <item>
+        <name>Emacs like find and cancel.</name>
+        <identifier>private.emacs_find_cancel</identifier>
+
+        <not>EMACS, FINDER</not>
+
+        <autogen>
+            <!-- C-g send ESC -->
+            <!-- [osx::C-g] == [raw::C-U] to [raw::ESCAPE] == [osx::Esc] -->
+            --KeyToKey--
+            KeyCode::U, ModifierFlag::CONTROL_L,
+            KeyCode::ESCAPE
+        </autogen>
+
+        <autogen>
+            <!-- C-s find -->
+            <!-- [osx::C-s] == [raw::C-;] to [raw::CMD-y] == [osx::CMD-f] -->
+            --KeyToKey--
+            KeyCode::SEMICOLON, ModifierFlag::CONTROL_L,
+            KeyCode::Y, ModifierFlag::COMMAND_L,
+        </autogen>
+
+        <autogen>
+            <!-- C-r find previous -->
+            <!-- [osx::C-r] == [raw::C-o] to [raw::CMD-SHIFT-u] == [osx::CMD-SHIFT-g] -->
+            --KeyToKey--
+            KeyCode::O, ModifierFlag::CONTROL_L,
+            KeyCode::U, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L
+        </autogen>
+
+    </item>
+
+
+
+</root>
