@@ -235,7 +235,7 @@
                 <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
                 <autogen>
                     __KeyToKey__
-                    KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+                    KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
                     KeyCode::KEY_4,
                 </autogen>
                 <autogen>
@@ -251,7 +251,7 @@
                 <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
                 <autogen>
                     __KeyToKey__
-                    KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+                    KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
                     KeyCode::KEY_5,
                 </autogen>
                 <autogen>
@@ -267,7 +267,7 @@
                 <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
                 <autogen>
                     __KeyToKey__
-                    KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+                    KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
                     KeyCode::KEY_1,
                 </autogen>
                 <autogen>
@@ -283,7 +283,7 @@
                 <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
                 <autogen>
                     __KeyToKey__
-                    KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+                    KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
                     KeyCode::KEY_2,
                 </autogen>
                 <autogen>
@@ -299,7 +299,7 @@
                 <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
                 <autogen>
                     __KeyToKey__
-                    KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+                    KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
                     KeyCode::KEY_3,
                 </autogen>
                 <autogen>
@@ -316,7 +316,7 @@
                 <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
                 <autogen>
                     __KeyToKey__
-                    KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+                    KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
                     KeyCode::KEY_6,
                 </autogen>
                 <autogen>
@@ -332,7 +332,7 @@
                 <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
                 <autogen>
                     __KeyToKey__
-                    KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+                    KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
                     KeyCode::KEY_7,
                 </autogen>
                 <autogen>
@@ -348,7 +348,7 @@
                 <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
                 <autogen>
                     __KeyToKey__
-                    KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+                    KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
                     KeyCode::KEY_8,
                 </autogen>
                 <autogen>
@@ -364,7 +364,7 @@
                 <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
                 <autogen>
                     __KeyToKey__
-                    KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+                    KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
                     KeyCode::KEY_9,
                 </autogen>
                 <autogen>
@@ -380,7 +380,7 @@
                 <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
                 <autogen>
                     __KeyToKey__
-                    KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+                    KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
                     KeyCode::KEY_0,
                 </autogen>
                 <autogen>
