@@ -228,11 +228,78 @@
                 </autogen>
             </item>
 
+            <item>
+                <name>Swap 1 and Shift 1</name>
+                <identifier>vkz.remap.one_exclamation</identifier>
+                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::KEY_1, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
+                    KeyCode::KEY_1, ModifierFlag::CONTROL_L,
+                </autogen>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                    KeyCode::KEY_1,
+                </autogen>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::KEY_1,
+                    KeyCode::KEY_1, ModifierFlag::SHIFT_L,
+                </autogen>
+            </item>
+
+            <item>
+                <name>Swap 2 and Shift 2</name>
+                <identifier>vkz.remap.two_at</identifier>
+                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::KEY_2, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
+                    KeyCode::KEY_2, ModifierFlag::CONTROL_L,
+                </autogen>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                    KeyCode::KEY_2,
+                </autogen>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::KEY_2,
+                    KeyCode::KEY_2, ModifierFlag::SHIFT_L,
+                </autogen>
+            </item>
+
+            <item>
+                <name>Swap 3 and Shift 3</name>
+                <identifier>vkz.remap.three_hash</identifier>
+                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::KEY_3, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
+                    KeyCode::KEY_3, ModifierFlag::CONTROL_L,
+                </autogen>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                    KeyCode::KEY_3,
+                </autogen>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::KEY_3,
+                    KeyCode::KEY_3, ModifierFlag::SHIFT_L,
+                </autogen>
+            </item>
 
             <item>
                 <name>Change 4 to ampersand</name>
                 <identifier>vkz.remap.four_ampersand</identifier>
                 <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::KEY_4, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
+                    KeyCode::KEY_4, ModifierFlag::CONTROL_L,
+                </autogen>
                 <autogen>
                     __KeyToKey__
                     KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
@@ -260,55 +327,6 @@
                     KeyCode::BACKSLASH, ModifierFlag::SHIFT_L
                 </autogen>
             </item>
-
-            <item>
-                <name>Swap 1 and Shift 1</name>
-                <identifier>vkz.remap.one_exclamation</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_1,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_1,
-                    KeyCode::KEY_1, ModifierFlag::SHIFT_L,
-                </autogen>
-            </item>
-
-            <item>
-                <name>Swap 2 and Shift 2</name>
-                <identifier>vkz.remap.two_at</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_2,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_2,
-                    KeyCode::KEY_2, ModifierFlag::SHIFT_L,
-                </autogen>
-            </item>
-
-            <item>
-                <name>Swap 3 and Shift 3</name>
-                <identifier>vkz.remap.three_hash</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_3,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_3,
-                    KeyCode::KEY_3, ModifierFlag::SHIFT_L,
-                </autogen>
-            </item>
-
 
             <item>
                 <name>Change 6 to +</name>
@@ -396,8 +414,20 @@
         </item>
 
 
-    </item>
+        <!-- <item> -->
+        <!--     <name>Key chords</name> -->
+        <!--     <item> -->
+        <!--         <name>Left curly {</name> -->
+        <!--         <identifier>vkz.chord.left_curly</identifier> -->
+        <!--         <lastpressedphysicalkey_only>KeyCode::I</lastpressedphysicalkey_only> -->
+        <!--         <elapsedtimesincelastpressed_lessthan>Millisecond::RawValue::1000</elapsedtimesincelastpressed_lessthan> -->
+        <!--         <autogen> -->
+        <!--             __KeyToKey__ KeyCode::KEY_9, KeyCode::MINUS, -->
+        <!--         </autogen> -->
+        <!--     </item> -->
+        <!-- </item> -->
 
+    </item>
 
 
 
