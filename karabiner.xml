@@ -229,6 +229,17 @@
             </item>
 
             <item>
+                <name>Change Shift \ to dollar ()</name>
+                <identifier>vkz.remap.shift_backslash_dollar</identifier>
+                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+                    KeyCode::KEY_4, ModifierFlag::SHIFT_L,
+                </autogen>
+            </item>
+
+            <item>
                 <name>Swap 1 and Shift 1</name>
                 <identifier>vkz.remap.one_exclamation</identifier>
                 <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
@@ -238,6 +249,7 @@
                     KeyCode::KEY_1, ModifierFlag::CONTROL_L,
                 </autogen>
                 <autogen>
+                    <!-- Leave C-[1-4] as is so switching Expose Spaces works -->
                     __KeyToKey__
                     KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
                     KeyCode::KEY_1,
