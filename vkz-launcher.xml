@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<root>
+
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_emacs</name>
+        <url type="file">/Applications/Emacs.app</url>
+    </vkopenurldef>
+
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_Ya</name>
+        <url type="file">/Applications/Yandex.app</url>
+    </vkopenurldef>
+
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_Quicksilver</name>
+        <url type="file">/Applications/Quicksilver.app</url>
+    </vkopenurldef>
+
+  <item>
+    <name>vkz launcher mode</name>
+
+    <item>
+      <name>Launcher Mode v2</name>
+      <appendix>Open apps by shortcut keys.</appendix>
+      <appendix></appendix>
+      <appendix>Usage:</appendix>
+      <appendix></appendix>
+      <appendix>Enable launcher mode by O key. (Remember as "O"pen apps.)</appendix>
+      <appendix><![CDATA[  * Open "Activity Monitor" by "O down -> A down -> A up".  ]]></appendix>
+      <appendix><![CDATA[  * Open "Mail" by "O down -> M down -> M up".  ]]></appendix>
+      <appendix>And you can open other apps by similar way.</appendix>
+      <appendix></appendix>
+      <appendix>You can also open apps by holding O+A keys down.</appendix>
+      <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in "Key Repeat" tab.</appendix>
+      <appendix></appendix>
+      <appendix>List:</appendix>
+      <appendix></appendix>
+      <appendix>* Activity Monitor: O+A key</appendix>
+      <appendix>* Dictionary: O+D key</appendix>
+      <appendix>* Search a selected text by Dictionary: O+Q key</appendix>
+      <appendix>* DigitalColor Meter: O+shift+D key</appendix>
+      <appendix>* Launchpad: O+Space key</appendix>
+      <appendix>* Mail: O+M key</appendix>
+      <appendix>* Mission Control: O+Tab key</appendix>
+      <appendix>* Safari: O+S key</appendix>
+      <appendix>* Show Desktop: O+Escape key</appendix>
+      <appendix>* Stickies: O+shift+S key</appendix>
+      <appendix>* Terminal: O+T key</appendix>
+      <appendix>* TextEdit: O+shift+T key</appendix>
+      <appendix>* Xcode: O+X key</appendix>
+      <appendix>* iPhone Simulator: O+shift+X key</appendix>
+
+      <identifier>vkz.launcher_mode_v2</identifier>
+
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::S, ModifierFlag::NONE,
+
+        @begin
+        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_vkz_notsave_launcher_mode_v2,
+        @end
+
+        @begin
+        KeyCode::S,
+        @end
+      </autogen>
+
+    </item>
+
+    <item hidden="true">
+      <identifier vk_config="true">vkz.notsave.launcher_mode_v2</identifier>
+
+      {{ LAUNCHER_MODE_V2_EXTRA }}
+
+      <autogen>
+        __BlockUntilKeyUp__ KeyCode::S
+      </autogen>
+
+      <autogen>__KeyToKey__ KeyCode::H, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Dictionary</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::Q, ModifierFlag::NONE,
+        KeyCode::C, ModifierFlag::COMMAND_L,
+        KeyCode::VK_WAIT_100MS,
+        KeyCode::VK_OPEN_URL_APP_Dictionary,
+        KeyCode::VK_WAIT_100MS,
+        KeyCode::VK_WAIT_100MS,
+        KeyCode::V, ModifierFlag::COMMAND_L,
+        Option::NOREPEAT
+      </autogen>
+      <!-- <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Quicksilver</autogen> -->
+      <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_emacs</autogen>
+      <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Ya</autogen>
+      <autogen>__KeyToKey__ KeyCode::T, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Ya</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::CONTROL_L, KeyCode::MINUS</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::CONTROL_L, KeyCode::EQUAL</autogen>
+    </item>
+
+    <item hidden="true">
+      <identifier vk_config="true">vkz.notsave.launcher_mode_v3</identifier>
+
+      {{ LAUNCHER_MODE_V2_EXTRA }}
+
+      <autogen>
+        __BlockUntilKeyUp__ KeyCode::D
+      </autogen>
+
+      <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::MINUS</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::EQUAL</autogen>
+    </item>
+
+  </item>
+</root>

@@ -70,6 +70,8 @@
     <!--                                                                           -->
     <!-- * [osx:C-s] == [raw:C-SEMICOLON] to [raw:CMD-Y] == [osx:CMD-f]            -->
 
+    <include path="{{ ENV_HOME }}/.personal_configs/vkz-launcher.xml" />
+
     <item>
         <name>vkz</name>
 
@@ -84,7 +86,24 @@
             <productid>0x07a5</productid>
         </deviceproductdef>
 
-
+        <item>
+            <name>Command to Control+Space (set-mark) only in Emacs</name>
+            <identifier>private.command_set_mark_emacs</identifier>
+            <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+            <only>EMACS</only>
+            <autogen>
+                __KeyOverlaidModifier__
+                KeyCode::COMMAND_R,
+                KeyCode::COMMAND_R,
+                KeyCode::SPACE, ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen>
+                __KeyOverlaidModifier__
+                KeyCode::COMMAND_L,
+                KeyCode::COMMAND_L,
+                KeyCode::SPACE, ModifierFlag::CONTROL_L
+            </autogen>
+        </item>
 
 
         <item>
@@ -169,7 +188,6 @@
                 KeyCode::SLASH, ModifierFlag::COMMAND_L
             </autogen>
 
-
         </item>
 
 
@@ -205,12 +223,180 @@
 
         </item>
 
+        <!-- Version 2  -->
+
+        <item>
+
+            <name>Replace number keys with symbols v2</name>
+            <identifier>vkz.remap.number_row_v2</identifier>
+
+            <inputsource_only>DVORAK</inputsource_only>
+            <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+
+            <!-- Change BRACKET_RIGHT to % (^) -->
+            <autogen>
+                __KeyToKey__
+                KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+                KeyCode::KEY_6, ModifierFlag::SHIFT_L,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::BRACKET_RIGHT,
+                KeyCode::KEY_5, ModifierFlag::SHIFT_L
+            </autogen>
+
+            <!-- Change Shift \ to dollar () -->
+            <autogen>
+                __KeyToKey__
+                KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+                KeyCode::KEY_4, ModifierFlag::SHIFT_L,
+            </autogen>
+
+            <!-- Swap 1 and Shift 1 -->
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_1, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
+                KeyCode::KEY_1, ModifierFlag::CONTROL_L,
+            </autogen>
+            <autogen>
+                <!-- Leave C-[1-4] as is so switching Expose Spaces works -->
+                __KeyToKey__
+                KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                KeyCode::KEY_1,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_1,
+                KeyCode::KEY_1, ModifierFlag::SHIFT_L,
+            </autogen>
+
+            <!-- Swap 2 and Shift 2 -->
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_2, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
+                KeyCode::KEY_2, ModifierFlag::CONTROL_L,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                KeyCode::KEY_2,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_2,
+                KeyCode::KEY_2, ModifierFlag::SHIFT_L,
+            </autogen>
+
+            <!-- Swap 3 and Shift 3 -->
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_3, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
+                KeyCode::KEY_3, ModifierFlag::CONTROL_L,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                KeyCode::KEY_3,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_3,
+                KeyCode::KEY_3, ModifierFlag::SHIFT_L,
+            </autogen>
+
+            <!-- Change 4 to ampersand -->
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_4, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
+                KeyCode::KEY_4, ModifierFlag::CONTROL_L,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                KeyCode::KEY_4,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_4,
+                KeyCode::KEY_7, ModifierFlag::SHIFT_L
+            </autogen>
+
+            <!-- Change 5 to pipe -->
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                KeyCode::KEY_5,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_5,
+                KeyCode::BACKSLASH, ModifierFlag::SHIFT_L
+            </autogen>
+
+            <!-- Change 6 to + -->
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                KeyCode::KEY_6,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_6,
+                KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L
+            </autogen>
+
+            <!-- Change 7 to = -->
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                KeyCode::KEY_7,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_7,
+                KeyCode::BRACKET_RIGHT,
+            </autogen>
+
+            <!-- Swap 8 and Shift 8 -->
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                KeyCode::KEY_8,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_8,
+                KeyCode::KEY_8, ModifierFlag::SHIFT_L,
+            </autogen>
+
+            <!-- Swap 9 and Shift 9 -->
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                KeyCode::KEY_9,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_9, ,
+                KeyCode::KEY_9, ModifierFlag::SHIFT_L,
+            </autogen>
+
+            <!-- Swap 0 and Shift 0 -->
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
+                KeyCode::KEY_0,
+            </autogen>
+            <autogen>
+                __KeyToKey__
+                KeyCode::KEY_0,
+                KeyCode::KEY_0, ModifierFlag::SHIFT_L,
+            </autogen>
+
+        </item>
 
         <item>
             <name>Replace number keys with symbols.</name>
-
-            <!-- lost amp, hat, $, % -->
-
 
             <item>
                 <name>Change BRACKET_RIGHT to % (^)</name>
@@ -399,7 +585,7 @@
                 </autogen>
                 <autogen>
                     __KeyToKey__
-                    KeyCode::KEY_9, ,
+                    KeyCode::KEY_9,
                     KeyCode::KEY_9, ModifierFlag::SHIFT_L,
                 </autogen>
             </item>
@@ -422,7 +608,6 @@
 
 
 
-
         </item>
 
 
@@ -439,7 +624,22 @@
         <!--     </item> -->
         <!-- </item> -->
 
+        <item>
+            <name>Global C-m sends RETURN.</name>
+            <identifier>private.global_command_m</identifier>
+            <not>FINDER</not>
+
+            <autogen>
+                <!-- C-m RETURN -->
+                --KeyToKey--
+                KeyCode::M, ModifierFlag::CONTROL_L,
+                KeyCode::RETURN
+            </autogen>
+        </item>
+
+
     </item>
+
 
 
 
