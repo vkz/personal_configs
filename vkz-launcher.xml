@@ -16,6 +16,11 @@
         <url type="file">/Applications/Quicksilver.app</url>
     </vkopenurldef>
 
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_Evernote</name>
+        <url type="file">/Applications/Evernote.app</url>
+    </vkopenurldef>
+
   <item>
     <name>vkz launcher mode</name>
 
@@ -93,6 +98,7 @@
       <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
       <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Ya</autogen>
       <autogen>__KeyToKey__ KeyCode::T, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Ya</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Evernote</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::CONTROL_L, KeyCode::MINUS</autogen>
