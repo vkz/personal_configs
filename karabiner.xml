@@ -637,6 +637,18 @@
             </autogen>
         </item>
 
+        <item>
+            <name>Lock screen with ScrLk</name>
+            <identifier>vkz.remap.scrlk</identifier>
+            <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+            <autogen>
+                __KeyToKey__
+                KeyCode::F14,
+                KeyCode::PC_POWER, ModifierFlag::CONTROL_L, ModifierFlag::SHIFT_L,
+            </autogen>
+        </item>
+
+
 
     </item>
 
