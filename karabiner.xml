@@ -87,14 +87,30 @@
         </deviceproductdef>
 
         <item>
+            <name>OPTION_R to COMMAND_R, CONTROL_L to FN (only on MS Keyboard)</name>
+            <identifier>private.option_r_command_r</identifier>
+            <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+            <autogen>
+                --KeyToKey--
+                KeyCode::OPTION_R,
+                KeyCode::COMMAND_R,
+            </autogen>
+            <autogen>
+                --KeyToKey--
+                KeyCode::CONTROL_L,
+                KeyCode::FN,
+            </autogen>
+        </item>
+
+        <item>
             <name>Command to Control+Space (set-mark) only in Emacs</name>
             <identifier>private.command_set_mark_emacs</identifier>
             <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
             <only>EMACS</only>
             <autogen>
                 __KeyOverlaidModifier__
-                KeyCode::COMMAND_R,
-                KeyCode::COMMAND_R,
+                KeyCode::OPTION_R,
+                KeyCode::OPTION_R,
                 KeyCode::SPACE, ModifierFlag::CONTROL_L
             </autogen>
             <autogen>
