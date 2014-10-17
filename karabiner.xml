@@ -247,7 +247,7 @@
             <identifier>vkz.remap.number_row_v2</identifier>
 
             <inputsource_only>DVORAK</inputsource_only>
-            <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+            <!-- <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only> -->
 
             <!-- Change BRACKET_RIGHT to % (^) -->
             <autogen>
