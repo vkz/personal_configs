@@ -103,7 +103,7 @@
         </item>
 
         <item>
-            <name>Command to Control+Space (set-mark) only in Emacs</name>
+            <name>Command to Control+Space only in Emacs (MS)</name>
             <identifier>private.command_set_mark_emacs</identifier>
             <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
             <only>EMACS</only>
@@ -113,6 +113,18 @@
                 KeyCode::OPTION_R,
                 KeyCode::SPACE, ModifierFlag::CONTROL_L
             </autogen>
+            <autogen>
+                __KeyOverlaidModifier__
+                KeyCode::COMMAND_L,
+                KeyCode::COMMAND_L,
+                KeyCode::SPACE, ModifierFlag::CONTROL_L
+            </autogen>
+        </item>
+
+        <item>
+            <name>Command to Control+Space only in Emacs (Air)</name>
+            <identifier>private.command_set_mark_emacs_air</identifier>
+            <only>EMACS</only>
             <autogen>
                 __KeyOverlaidModifier__
                 KeyCode::COMMAND_L,
