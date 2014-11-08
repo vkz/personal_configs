@@ -7,7 +7,7 @@
 PATH="/usr/local/bin:${PATH}"
 PATH="${PATH}:/Users/kozin/Documents/racket/racket/bin"
 PATH="${PATH}:/usr/local/lib/python2.7/site-packages"
-PATH="./node_modules/.bin:${PATH}"
+# PATH="${PATH}:node_modules/.bin"
 
 # PATH="${PATH}:/Applications/Racket/bin:/Applications/factor:/usr/local/sml/bin:/Applications/Gnuplot.app/Contents/Resources/bin"
 # PATH="${PATH}:/usr/local/Cellar/scheme48/1.9/bin"
@@ -35,7 +35,7 @@ alias ll='la -lh'
 
 #Homebrew doesn't install emacs Info docs
 #this will force it to do so
-HOMEBREW_KEEP_INFO=1; export HOMEBREW_KEEP_INFO;
+#HOMEBREW_KEEP_INFO=1; export HOMEBREW_KEEP_INFO;
 
 #adding ssh-keys
 #'ssh-add -l' to see what keys are installed
@@ -52,11 +52,11 @@ ssh-add ~/.ssh/id-rsa > /dev/null 2> /dev/null || true
 # to check that node sees the npm packages installed
 NODE_PATH=/usr/local/lib/node_modules; export NODE_PATH;
 
+# # shell completions
+for f in $(brew --prefix)/etc/bash_completion.d/*; do source $f; done
+
 # # ruby
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function
-
-# # shell completions
-# for f in $(brew --prefix)/etc/bash_completion.d/*; do source $f; done
 
 # if [ -f $(brew --prefix)/etc/bash_completion ]; then
 #   . $(brew --prefix)/etc/bash_completion
