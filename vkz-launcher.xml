@@ -128,6 +128,7 @@
       <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Messages</autogen>
       <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_TweetDeck</autogen>
       <autogen>__KeyToKey__ KeyCode::R, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Preview</autogen>
+      <autogen>__KeyToKey__ KeyCode::Y, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Finder</autogen>
 
     </item>
 
