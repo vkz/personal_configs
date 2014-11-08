@@ -21,6 +21,26 @@
         <url type="file">/Applications/Evernote.app</url>
     </vkopenurldef>
 
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_TweetDeck</name>
+        <url type="file">/Applications/TweetDeck.app</url>
+    </vkopenurldef>
+
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_Messages</name>
+        <url type="file">/Applications/Messages.app</url>
+    </vkopenurldef>
+
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_Terminal</name>
+        <url type="file">/Applications/Utilities/Terminal.app</url>
+    </vkopenurldef>
+
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_Preview</name>
+        <url type="file">/Applications/Preview.app</url>
+    </vkopenurldef>
+
   <item>
     <name>vkz launcher mode</name>
 
@@ -103,6 +123,12 @@
       <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::CONTROL_L, KeyCode::MINUS</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::CONTROL_L, KeyCode::EQUAL</autogen>
+
+      <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Messages</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_TweetDeck</autogen>
+      <autogen>__KeyToKey__ KeyCode::R, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Preview</autogen>
+
     </item>
 
     <item hidden="true">
