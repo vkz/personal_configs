@@ -72,8 +72,36 @@
 
     <include path="{{ ENV_HOME }}/.personal_configs/vkz-launcher.xml" />
 
+    <!-- VirtualBox Win7 VM specific stuff -->
+    <appdef>
+        <appname>WIN7</appname>
+        <equal>org.virtualbox.app.VirtualBoxVM</equal>
+    </appdef>
+    <windownamedef>
+        <name>WIN7_WINDOW</name>
+        <regex>^win7</regex>
+    </windownamedef>
+
+    <item>
+        <name>vkz-win7</name>
+
+        <item>
+            <name>COMMAND to OPTION on Win7 VM only</name>
+            <identifier>private.command_option_win7</identifier>
+            <only>WIN7</only>
+            <autogen>
+                __KeyOverlaidModifier__
+                KeyCode::COMMAND_L,
+                KeyCode::OPTION_L,
+                KeyCode::SPACE, ModifierFlag::CONTROL_L
+            </autogen>
+        </item>
+
+    </item>
+
     <item>
         <name>vkz</name>
+
 
         <!-- MS external keyboard -->
         <devicevendordef>
@@ -85,6 +113,64 @@
             <productname>MS_KEYBOARD</productname>
             <productid>0x07a5</productid>
         </deviceproductdef>
+
+        <item>
+            <name>Shift_R to Shift_R</name>
+            <appendix>(+ When you type Shift_R only, Sticky Shift_R)</appendix>
+            <appendix>(+ When you type Shift_R twice, Capslock)</appendix>
+            <identifier>remap.vkz_shiftr_to_sticky_shiftr</identifier>
+            <autogen>
+                __KeyOverlaidModifier__
+                <!-- from -->
+                KeyCode::SHIFT_R, ModifierFlag::EXTRA3,
+                <!-- to -->
+                KeyCode::SHIFT_R,
+                <!-- overlaid -->
+                KeyCode::CAPSLOCK,
+                KeyCode::VK_STICKY_SHIFT_R_FORCE_OFF,
+                KeyCode::VK_STICKY_EXTRA3_FORCE_OFF,
+                KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick,
+            </autogen>
+            <autogen>
+                __KeyOverlaidModifier__
+                <!-- from -->
+                KeyCode::SHIFT_R,
+                <!-- to -->
+                KeyCode::SHIFT_R,
+                <!-- overlaid -->
+                KeyCode::VK_STICKY_SHIFT_R,
+                KeyCode::VK_STICKY_EXTRA3,
+            </autogen>
+        </item>
+
+        <item>
+            <name>Shift_L to Shift_L</name>
+            <appendix>(+ When you type Shift_R only, Sticky Shift_R)</appendix>
+            <appendix>(+ When you type Shift_R twice, Capslock)</appendix>
+            <identifier>remap.vkz_shiftl_to_sticky_shiftl</identifier>
+            <autogen>
+                __KeyOverlaidModifier__
+                <!-- from -->
+                KeyCode::SHIFT_L, ModifierFlag::EXTRA3,
+                <!-- to -->
+                KeyCode::SHIFT_L,
+                <!-- overlaid -->
+                KeyCode::CAPSLOCK,
+                KeyCode::VK_STICKY_SHIFT_L_FORCE_OFF,
+                KeyCode::VK_STICKY_EXTRA3_FORCE_OFF,
+                KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick,
+            </autogen>
+            <autogen>
+                __KeyOverlaidModifier__
+                <!-- from -->
+                KeyCode::SHIFT_L,
+                <!-- to -->
+                KeyCode::SHIFT_L,
+                <!-- overlaid -->
+                KeyCode::VK_STICKY_SHIFT_L,
+                KeyCode::VK_STICKY_EXTRA3,
+            </autogen>
+        </item>
 
         <item>
             <name>OPTION_R to COMMAND_R, CONTROL_L to FN (only on MS Keyboard)</name>
@@ -133,6 +219,13 @@
             </autogen>
         </item>
 
+        <item>
+          <name>Space to Control_L</name>
+          <appendix>(+ When you type Space only, send Space)</appendix>
+          <identifier>private.space_to_control_space</identifier>
+          <inputsource_only>DVORAK</inputsource_only>
+          <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::CONTROL_L, KeyCode::SPACE</autogen>
+        </item>
 
         <item>
             <name>Switch RU to Dvorak while any of CONTROL_L or COMMAND_L is pressed</name>
@@ -141,9 +234,34 @@
                 <inputsource_only>RUSSIAN</inputsource_only>
 
                 <autogen>
+                  __KeyOverlaidModifier__
+                  KeyCode::SPACE,
+                  KeyCode::CONTROL_L,
+                  KeyCode::SPACE,
+
+                  Option::KEYTOKEY_BEFORE_KEYDOWN,
+                  KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+
+                  Option::KEYTOKEY_AFTER_KEYUP,
+                  KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+                </autogen>
+
+                <autogen>
                     --KeyToKey--
                     KeyCode::CONTROL_L,
                     KeyCode::CONTROL_L,
+
+                    Option::KEYTOKEY_BEFORE_KEYDOWN,
+                    KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+
+                    Option::KEYTOKEY_AFTER_KEYUP,
+                    KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+                </autogen>
+
+                <autogen>
+                    --KeyToKey--
+                    KeyCode::CONTROL_R,
+                    KeyCode::CONTROL_R,
 
                     Option::KEYTOKEY_BEFORE_KEYDOWN,
                     KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
@@ -164,6 +282,17 @@
                     KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
                 </autogen>
 
+                <autogen>
+                    --KeyToKey--
+                    KeyCode::COMMAND_R,
+                    KeyCode::COMMAND_R,
+
+                    Option::KEYTOKEY_BEFORE_KEYDOWN,
+                    KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+
+                    Option::KEYTOKEY_AFTER_KEYUP,
+                    KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+                </autogen>
 
             </block>
         </item>
@@ -223,7 +352,7 @@
             <name>Emacs like find and cancel.</name>
             <identifier>private.emacs_find_cancel</identifier>
 
-            <not>EMACS, FINDER</not>
+            <not>EMACS, FINDER, WIN7</not>
 
             <autogen>
                 <!-- C-g send ESC -->
