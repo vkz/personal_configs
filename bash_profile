@@ -11,7 +11,12 @@ PATH="${PATH}:/usr/local/lib/python2.7/site-packages"
 
 # PATH="${PATH}:/Applications/Racket/bin:/Applications/factor:/usr/local/sml/bin:/Applications/Gnuplot.app/Contents/Resources/bin"
 # PATH="${PATH}:/usr/local/Cellar/scheme48/1.9/bin"
+MANPATH="$/usr/share/man:/usr/local/share/man:/usr/X11/share/man:{MANPATH}"
 MANPATH="${MANPATH}:/Users/kozin/Documents/racket/racket/man"
+
+# Chromium depot tools required for V8
+# apparently need to be in the front
+PATH="/Users/kozin/Documents/depot_tools:${PATH}"
 
 # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
 export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
@@ -30,12 +35,16 @@ alias la='ls -a'
 alias ll='la -lh'
 # alias gtypist='gtypist --scoring=cpm'
 
+# IR Hydra
+alias nodeir='node --redirect-code-traces --redirect-code-traces-to=code.asm --trace-deopt --trace-hydrogen --trace-phase=Z --print-opt-code --code-comments --hydrogen-track-positions'
+alias d8='/Users/kozin/Documents/v8/xcodebuild/Release/d8'
+alias d8ir='d8 --redirect-code-traces --redirect-code-traces-to=code.asm --trace-deopt --trace-hydrogen --trace-phase=Z --print-opt-code --code-comments --hydrogen-track-positions'
+
 # #IJulia
 # alias ijulia='ipython notebook --profile=julia'
 
-#Homebrew doesn't install emacs Info docs
-#this will force it to do so
-#HOMEBREW_KEEP_INFO=1; export HOMEBREW_KEEP_INFO;
+#Homebrew
+export HOMEBREW_EDITOR=$EDITOR
 
 #adding ssh-keys
 #'ssh-add -l' to see what keys are installed

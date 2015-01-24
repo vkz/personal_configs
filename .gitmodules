@@ -1,0 +1,3 @@
+[submodule "emacs.d.candidate"]
+        path = emacs.d.candidate
+        url = https://github.com/vkz/emacs.git
