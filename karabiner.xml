@@ -115,77 +115,64 @@
         </deviceproductdef>
 
         <item>
-            <name>Shift_R to Shift_R</name>
-            <appendix>(+ When you type Shift_R only, Sticky Shift_R)</appendix>
-            <appendix>(+ When you type Shift_R twice, Capslock)</appendix>
-            <identifier>remap.vkz_shiftr_to_sticky_shiftr</identifier>
-            <autogen>
-                __KeyOverlaidModifier__
-                <!-- from -->
-                KeyCode::SHIFT_R, ModifierFlag::EXTRA3,
-                <!-- to -->
-                KeyCode::SHIFT_R,
-                <!-- overlaid -->
-                KeyCode::CAPSLOCK,
-                KeyCode::VK_STICKY_SHIFT_R_FORCE_OFF,
-                KeyCode::VK_STICKY_EXTRA3_FORCE_OFF,
-                KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick,
-            </autogen>
-            <autogen>
-                __KeyOverlaidModifier__
-                <!-- from -->
-                KeyCode::SHIFT_R,
-                <!-- to -->
-                KeyCode::SHIFT_R,
-                <!-- overlaid -->
-                KeyCode::VK_STICKY_SHIFT_R,
-                KeyCode::VK_STICKY_EXTRA3,
-            </autogen>
+          <name>OPTION_R to COMMAND_R, CONTROL_L to FN (MS)</name>
+          <identifier>private.option_r_command_r</identifier>
+          <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+          <autogen>
+            --KeyToKey--
+            KeyCode::OPTION_R,
+            KeyCode::COMMAND_R,
+          </autogen>
+          <autogen>
+            --KeyToKey--
+            KeyCode::CONTROL_L,
+            KeyCode::FN,
+          </autogen>
         </item>
 
-        <item>
-            <name>Shift_L to Shift_L</name>
-            <appendix>(+ When you type Shift_R only, Sticky Shift_R)</appendix>
-            <appendix>(+ When you type Shift_R twice, Capslock)</appendix>
-            <identifier>remap.vkz_shiftl_to_sticky_shiftl</identifier>
-            <autogen>
-                __KeyOverlaidModifier__
-                <!-- from -->
-                KeyCode::SHIFT_L, ModifierFlag::EXTRA3,
-                <!-- to -->
-                KeyCode::SHIFT_L,
-                <!-- overlaid -->
-                KeyCode::CAPSLOCK,
-                KeyCode::VK_STICKY_SHIFT_L_FORCE_OFF,
-                KeyCode::VK_STICKY_EXTRA3_FORCE_OFF,
-                KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick,
-            </autogen>
-            <autogen>
-                __KeyOverlaidModifier__
-                <!-- from -->
-                KeyCode::SHIFT_L,
-                <!-- to -->
-                KeyCode::SHIFT_L,
-                <!-- overlaid -->
-                KeyCode::VK_STICKY_SHIFT_L,
-                KeyCode::VK_STICKY_EXTRA3,
-            </autogen>
-        </item>
+        <include path="{{ ENV_HOME }}/.personal_configs/numbers.xml" />
 
+        
         <item>
-            <name>OPTION_R to COMMAND_R, CONTROL_L to FN (only on MS Keyboard)</name>
-            <identifier>private.option_r_command_r</identifier>
+          <name>Change Option_L Key to Dvorak</name>
+          <item>
+            <name>Option_L to Option_L or Dvorak</name>
+            <appendix>(+ When you type Option_L only, change Input Source to Dvorak)</appendix>
+            <identifier>remap.optionl_dvorak</identifier>
+            <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</autogen>
+          </item>
+        </item>
+        <item>
+          <name>Change Option_R Key to Russian</name>
+          <item>
+            <name>PC_APPLICATION to Option_R or Russian (MS)</name>
+            <appendix>(+ When you type PC_APPLICATION only, change Input Source to Russian else Option_R)</appendix>
+            <identifier>remap.optionr_russian_ms</identifier>
             <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-            <autogen>
-                --KeyToKey--
-                KeyCode::OPTION_R,
-                KeyCode::COMMAND_R,
-            </autogen>
-            <autogen>
-                --KeyToKey--
-                KeyCode::CONTROL_L,
-                KeyCode::FN,
-            </autogen>
+            <autogen>__KeyOverlaidModifier__ KeyCode::PC_APPLICATION, KeyCode::OPTION_R, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
+          </item>
+          <item>
+            <name>Option_R to Option_R or Russian</name>
+            <appendix>(+ When you type Option_R only, change Input Source to Russian)</appendix>
+            <identifier>remap.optionr_russian</identifier>
+            <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
+          </item>
+        </item>
+
+        <item>
+          <name>Space + Shift_R (Shift_L) to Russian (Dvorak)</name>
+          <appendix>(+ When you type Shift_R only, Sticky Shift_R)</appendix>
+          <identifier>remap.vkz_shiftr_shiftl_space_russian_dvorak</identifier>
+          <autogen>
+            __KeyToKey__
+            KeyCode::SPACE, ModifierFlag::SHIFT_R, ModifierFlag::NONE,
+            KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::SPACE, ModifierFlag::SHIFT_L, ModifierFlag::NONE,
+            KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+          </autogen>
         </item>
 
         <item>
