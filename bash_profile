@@ -3,6 +3,8 @@
 #.bashrc executed only by non-login bash and zsh shells
 ############################################
 
+export PS1="\u@:\w$ "
+
 # path
 PATH="/usr/local/bin:${PATH}"
 PATH="${PATH}:/Users/kozin/Documents/racket/racket/bin"
