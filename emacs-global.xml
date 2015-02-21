@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<root>
+
+  
+  <item>
+    <name>Global Emacs-like behavior</name>
+    <item>
+      <name>Emacs like forward/backward [kill] word, undo.</name>
+      <identifier>private.emacs_forward_backward_word_undo</identifier>
+
+      <not>EMACS</not>
+      <uielementrole_only>AXTextArea, AXTextField, AXWebArea</uielementrole_only>
+
+      <autogen>
+        <!-- M-f forward-word -->
+        <!-- [osx::CMD-f] == [raw::CMD-Y] to [raw::OPT-CURSOR_RIGHT] == [osx::OPT-right] -->
+        --KeyToKey--
+        KeyCode::Y, ModifierFlag::COMMAND_L,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L
+      </autogen>
+
+      <autogen>
+        <!-- M-b backward-word -->
+        <!-- [osx::CMD-b] == [raw::CMD-N] to [raw::OPT-CURSOR_LEFT] == [osx::OPT-left] -->
+        --KeyToKey--
+        KeyCode::N, ModifierFlag::COMMAND_L,
+        KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L
+      </autogen>
+
+
+      <autogen>
+        <!-- M-d kill-word -->
+        <!-- [osx::CMD-d] == [raw::CMD-H] to [raw::OPT-FORWARD_DELETE] == [osx::OPT-FN-backspace] -->
+        --KeyToKey--
+        KeyCode::H, ModifierFlag::COMMAND_L,
+        KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L
+      </autogen>
+
+      <autogen>
+        <!-- CMD-del backward-kill-word -->
+        <!-- [osx::CMD-backspace] == [raw::CMD-DELETE] to [raw::OPT-DELETE] == [osx::OPT-backspace] -->
+        --KeyToKey--
+        KeyCode::DELETE, ModifierFlag::COMMAND_L,
+        KeyCode::DELETE, ModifierFlag::OPTION_L
+      </autogen>
+
+      <autogen>
+        <!-- C-/ undo -->
+        <!-- [osx::C-/] == [raw::C-BRACKET_LEFT] to [raw::CMD-SLASH] == [osx::CMD-z] -->
+        --KeyToKey--
+        KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L,
+        KeyCode::SLASH, ModifierFlag::COMMAND_L
+      </autogen>
+
+    </item>
+
+
+    <item>
+      <name>Emacs like find and cancel.</name>
+      <identifier>private.emacs_find_cancel</identifier>
+
+      <not>EMACS, FINDER, WIN7</not>
+
+      <autogen>
+        <!-- C-g send ESC -->
+        <!-- [osx::C-g] == [raw::C-U] to [raw::ESCAPE] == [osx::Esc] -->
+        --KeyToKey--
+        KeyCode::U, ModifierFlag::CONTROL_L,
+        KeyCode::ESCAPE
+      </autogen>
+
+      <autogen>
+        <!-- C-s find -->
+        <!-- [osx::C-s] == [raw::C-;] to [raw::CMD-y] == [osx::CMD-f] -->
+        --KeyToKey--
+        KeyCode::SEMICOLON, ModifierFlag::CONTROL_L,
+        KeyCode::Y, ModifierFlag::COMMAND_L,
+      </autogen>
+
+      <autogen>
+        <!-- C-r find previous -->
+        <!-- [osx::C-r] == [raw::C-o] to [raw::CMD-SHIFT-u] == [osx::CMD-SHIFT-g] -->
+        --KeyToKey--
+        KeyCode::O, ModifierFlag::CONTROL_L,
+        KeyCode::U, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L
+      </autogen>
+
+    </item>
+  </item>
+
+</root>

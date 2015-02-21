@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<root>
+
+  <!-- VirtualBox Win7 VM specific stuff -->
+  <appdef>
+    <appname>WIN7</appname>
+    <equal>org.virtualbox.app.VirtualBoxVM</equal>
+  </appdef>
+  <windownamedef>
+    <name>WIN7_WINDOW</name>
+    <regex>^win7</regex>
+  </windownamedef>
+
+  <item>
+    <name>vkz-win7</name>
+
+    <item>
+      <name>COMMAND to OPTION on Win7 VM only</name>
+      <identifier>private.command_option_win7</identifier>
+      <only>WIN7</only>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::COMMAND_L,
+        KeyCode::OPTION_L,
+        KeyCode::SPACE, ModifierFlag::CONTROL_L
+      </autogen>
+    </item>
+
+  </item>
+
+
+</root>

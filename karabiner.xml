@@ -1,845 +1,249 @@
 <?xml version="1.0"?>
 <root>
 
-    <!--     This is what you need to know about key transformations that occur    -->
-    <!-- when `Karabiner` aka `KeyRemap4macbook` gets in the middle. Keys are      -->
-    <!-- effectively of two types:                                                 -->
-    <!--                                                                           -->
-    <!-- [osx] this is what OS receives and essentially what you believe you       -->
-    <!-- press, as in when sending Cmd-F (OSX find) it is the meaning not the      -->
-    <!-- physical keys you have in mind, the actual physical keys pressed and      -->
-    <!-- thus bytes generated can have different names spelled out on your         -->
-    <!-- physical keyboard. You can think of [osx] as essence, meaning.            -->
-    <!--                                                                           -->
-    <!-- [raw] is the actual raw keycode (byte) being sent - mapping between       -->
-    <!-- the physical key you pressed and the byte (number) generated. So as to    -->
-    <!-- avoid dealing with hexadecimal constants Karabiner gives them             -->
-    <!-- names. E.g.: [ENTER] is 0x4c. Everywhere you see a Karabiner name you     -->
-    <!-- should mentally think of it as a corresponding number or a physical       -->
-    <!-- key. Think of names as placeholders or representations, not               -->
-    <!-- meaning. These may later be mapped to something entirely different and    -->
-    <!-- passed to your OS for further interpretation.                             -->
-    <!--                                                                           -->
-    <!-- NB: If you don't do anything fancy with your layout and you have a        -->
-    <!-- standard QWERTY En keyboard chances are [osx] and [raw] will map onto     -->
-    <!-- each other perfectly. Since this is the default we get really confused    -->
-    <!-- when different layouts get into play, or seperate keys are re-mapped      -->
-    <!-- to something different. If you remember one thing about Karabiner make    -->
-    <!-- it this: it only deals with [raw] keys, which are referenced by their     -->
-    <!-- names. This last point is the source of confusion, so always think:       -->
-    <!-- name refers to a constant, not the meaning my mind is trying to attach    -->
-    <!-- to it. Don't let your mind trick you. Who knew that phylosophy can be     -->
-    <!-- so useful.                                                                -->
-    <!--                                                                           -->
-    <!-- Transformations:                                                          -->
-    <!--                                                                           -->
-    <!-- * [osx] -(1)- [raw] -(2)- [raw] -(3)- [osx]                               -->
-    <!--                                                                           -->
-    <!-- * [osx] -(in your head)- [raw] -(Karabiner)- [raw] -(in your head)- [osx] -->
-    <!--                                                                           -->
-    <!-- * Since -(2)- aka Karabiner only deals with [raw] this is what we need    -->
-    <!-- to provide it. Unfortunately this is where you'll need to do the          -->
-    <!-- mapping in your head: keys you want to send -(1)- and keys you want       -->
-    <!-- received by OS -(3)- need to be mapped to physical [raw] keys on the      -->
-    <!-- keyboard.                                                                 -->
-    <!--                                                                           -->
-    <!-- __Example__                                                               -->
-    <!--                                                                           -->
-    <!-- * My physical keyboard is a standard Macbook Air American-English         -->
-    <!-- QWERTY                                                                    -->
-    <!--                                                                           -->
-    <!-- * However, I chose Dvorak layout in OS X System Prefs, so having          -->
-    <!-- received a physical signal OS will preform transformation to              -->
-    <!-- Dvorak. I.e. physical signal marked semicolon `;` on my keyboard will     -->
-    <!-- translate into letter `s` by OSX.                                         -->
-    <!--                                                                           -->
-    <!-- * Now let's remap something with Karabiner. I want to be able to open     -->
-    <!-- a search box (OS X find that's envoked with Command-f) by typing          -->
-    <!-- Control-s on my Dvorak layout that is: [osx:C-s] to [osx: CMD-f]          -->
-    <!--                                                                           -->
-    <!-- * put differently [osx:C-s] [raw:???] -(Karabiner)- [raw:???] [osx:CMD-f] -->
-    <!--                                                                           -->
-    <!-- * simple but easily corruptable way to replace those ??? is to look at    -->
-    <!-- the names spelled out on the keys you press to get at C-s and CMD-f       -->
-    <!-- when typing Dvorak. Most of the time this is what you want and you'll     -->
-    <!-- arrive at the right answer                                                -->
-    <!--                                                                           -->
-    <!-- * a bullet-proof way however is to use Karabiner's EventViewer to see     -->
-    <!-- the KeyCodes generated. My advice go with phisical experiment no          -->
-    <!-- guessing and hoping, it's not theoretical physics.                        -->
-    <!--                                                                           -->
-    <!-- * [osx:C-s] == [raw:C-SEMICOLON] to [raw:CMD-Y] == [osx:CMD-f]            -->
+  <!--     This is what you need to know about key transformations that occur    -->
+  <!-- when `Karabiner` aka `KeyRemap4macbook` gets in the middle. Keys are      -->
+  <!-- effectively of two types:                                                 -->
+  <!--                                                                           -->
+  <!-- [osx] this is what OS receives and essentially what you believe you       -->
+  <!-- press, as in when sending Cmd-F (OSX find) it is the meaning not the      -->
+  <!-- physical keys you have in mind, the actual physical keys pressed and      -->
+  <!-- thus bytes generated can have different names spelled out on your         -->
+  <!-- physical keyboard. You can think of [osx] as essence, meaning.            -->
+  <!--                                                                           -->
+  <!-- [raw] is the actual raw keycode (byte) being sent - mapping between       -->
+  <!-- the physical key you pressed and the byte (number) generated. So as to    -->
+  <!-- avoid dealing with hexadecimal constants Karabiner gives them             -->
+  <!-- names. E.g.: [ENTER] is 0x4c. Everywhere you see a Karabiner name you     -->
+  <!-- should mentally think of it as a corresponding number or a physical       -->
+  <!-- key. Think of names as placeholders or representations, not               -->
+  <!-- meaning. These may later be mapped to something entirely different and    -->
+  <!-- passed to your OS for further interpretation.                             -->
+  <!--                                                                           -->
+  <!-- NB: If you don't do anything fancy with your layout and you have a        -->
+  <!-- standard QWERTY En keyboard chances are [osx] and [raw] will map onto     -->
+  <!-- each other perfectly. Since this is the default we get really confused    -->
+  <!-- when different layouts get into play, or seperate keys are re-mapped      -->
+  <!-- to something different. If you remember one thing about Karabiner make    -->
+  <!-- it this: it only deals with [raw] keys, which are referenced by their     -->
+  <!-- names. This last point is the source of confusion, so always think:       -->
+  <!-- name refers to a constant, not the meaning my mind is trying to attach    -->
+  <!-- to it. Don't let your mind trick you. Who knew that phylosophy can be     -->
+  <!-- so useful.                                                                -->
+  <!--                                                                           -->
+  <!-- Transformations:                                                          -->
+  <!--                                                                           -->
+  <!-- * [osx] -(1)- [raw] -(2)- [raw] -(3)- [osx]                               -->
+  <!--                                                                           -->
+  <!-- * [osx] -(in your head)- [raw] -(Karabiner)- [raw] -(in your head)- [osx] -->
+  <!--                                                                           -->
+  <!-- * Since -(2)- aka Karabiner only deals with [raw] this is what we need    -->
+  <!-- to provide it. Unfortunately this is where you'll need to do the          -->
+  <!-- mapping in your head: keys you want to send -(1)- and keys you want       -->
+  <!-- received by OS -(3)- need to be mapped to physical [raw] keys on the      -->
+  <!-- keyboard.                                                                 -->
+  <!--                                                                           -->
+  <!-- __Example__                                                               -->
+  <!--                                                                           -->
+  <!-- * My physical keyboard is a standard Macbook Air American-English         -->
+  <!-- QWERTY                                                                    -->
+  <!--                                                                           -->
+  <!-- * However, I chose Dvorak layout in OS X System Prefs, so having          -->
+  <!-- received a physical signal OS will preform transformation to              -->
+  <!-- Dvorak. I.e. physical signal marked semicolon `;` on my keyboard will     -->
+  <!-- translate into letter `s` by OSX.                                         -->
+  <!--                                                                           -->
+  <!-- * Now let's remap something with Karabiner. I want to be able to open     -->
+  <!-- a search box (OS X find that's envoked with Command-f) by typing          -->
+  <!-- Control-s on my Dvorak layout that is: [osx:C-s] to [osx: CMD-f]          -->
+  <!--                                                                           -->
+  <!-- * put differently [osx:C-s] [raw:???] -(Karabiner)- [raw:???] [osx:CMD-f] -->
+  <!--                                                                           -->
+  <!-- * simple but easily corruptable way to replace those ??? is to look at    -->
+  <!-- the names spelled out on the keys you press to get at C-s and CMD-f       -->
+  <!-- when typing Dvorak. Most of the time this is what you want and you'll     -->
+  <!-- arrive at the right answer                                                -->
+  <!--                                                                           -->
+  <!-- * a bullet-proof way however is to use Karabiner's EventViewer to see     -->
+  <!-- the KeyCodes generated. My advice go with phisical experiment no          -->
+  <!-- guessing and hoping, it's not theoretical physics.                        -->
+  <!--                                                                           -->
+  <!-- * [osx:C-s] == [raw:C-SEMICOLON] to [raw:CMD-Y] == [osx:CMD-f]            -->
 
-    <inputsourcedef>
-      <name>zeRusski</name>
-      <inputsourceid_prefix>org.unknown.keylayout.zeRusski</inputsourceid_prefix>
-    </inputsourcedef>
+  <!-- Custom zeRusski layouts -->
+  <inputsourcedef>
+    <name>ZEDVORAK</name>
+    <inputsourceid_prefix>org.unknown.keylayout.zeDvorak</inputsourceid_prefix>
+  </inputsourcedef>
 
-    <vkchangeinputsourcedef>
-      <name>KeyCode::VK_CHANGE_INPUTSOURCE_zeRusski</name>
-      <inputsourceid_equal>org.unknown.keylayout.zeRusski</inputsourceid_equal>
-    </vkchangeinputsourcedef>
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK</name>
+    <inputsourceid_equal>org.unknown.keylayout.zeDvorak</inputsourceid_equal>
+  </vkchangeinputsourcedef>
 
-    <include path="{{ ENV_HOME }}/.personal_configs/vkz-launcher.xml" />
+  <!-- MS external keyboard -->
+  <devicevendordef>
+    <vendorname>MS</vendorname>
+    <vendorid>0x045e</vendorid>
+  </devicevendordef>
 
-    <!-- VirtualBox Win7 VM specific stuff -->
-    <appdef>
-        <appname>WIN7</appname>
-        <equal>org.virtualbox.app.VirtualBoxVM</equal>
-    </appdef>
-    <windownamedef>
-        <name>WIN7_WINDOW</name>
-        <regex>^win7</regex>
-    </windownamedef>
+  <deviceproductdef>
+    <productname>MS_KEYBOARD</productname>
+    <productid>0x07a5</productid>
+  </deviceproductdef>
+
+
+  <item>
+    <name>vkz</name>
+
+    <include path="{{ ENV_HOME }}/.personal_configs/vm.xml" />
 
     <item>
-        <name>vkz-win7</name>
-
-        <item>
-            <name>COMMAND to OPTION on Win7 VM only</name>
-            <identifier>private.command_option_win7</identifier>
-            <only>WIN7</only>
-            <autogen>
-                __KeyOverlaidModifier__
-                KeyCode::COMMAND_L,
-                KeyCode::OPTION_L,
-                KeyCode::SPACE, ModifierFlag::CONTROL_L
-            </autogen>
-        </item>
-
+      <name>Overlaid OPTION_L</name>
+      <appendix>Switch to Dvorak when typed alone</appendix>
+      <identifier>remap.optionl_dvorak</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</autogen>
     </item>
 
     <item>
-        <name>vkz</name>
+      <name>Overlaid SPACE</name>
+      <appendix>Insert SPACE when typed alone</appendix>
+      <appendix>CONTROL in key combinations</appendix>
+      <identifier>private.space_to_control_space</identifier>
+      <inputsource_not>RUSSIAN</inputsource_not>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::CONTROL_L, KeyCode::SPACE</autogen>
+    </item>
 
-
-        <!-- MS external keyboard -->
-        <devicevendordef>
-            <vendorname>MS</vendorname>
-            <vendorid>0x045e</vendorid>
-        </devicevendordef>
-
-        <deviceproductdef>
-            <productname>MS_KEYBOARD</productname>
-            <productid>0x07a5</productid>
-        </deviceproductdef>
-
-        <item>
-          <name>CONTROL_L to FN (MS)</name>
-          <identifier>private.control_l_fn</identifier>
+    <item>
+      <name>Overlaid COMMAND_R</name>
+      <appendix>Switch to Russian when typed alone</appendix>
+      <identifier>private.option_r</identifier>
+      <inputsource_not>RUSSIAN</inputsource_not>
+      <block>
+        <block>
           <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-          <autogen>
-            --KeyToKey--
-            KeyCode::CONTROL_L,
-            KeyCode::FN,
-          </autogen>
-        </item>
-
-        <include path="{{ ENV_HOME }}/.personal_configs/numbers.xml" />
-
-
-        <item>
-          <name>Change Option_L Key to Dvorak</name>
-          <item>
-            <name>Option_L to Option_L or Dvorak</name>
-            <appendix>(+ When you type Option_L only, change Input Source to Dvorak)</appendix>
-            <identifier>remap.optionl_dvorak</identifier>
-            <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</autogen>
-          </item>
-        </item>
-        <item>
-          <name>Change Option_R Key to Russian</name>
-          <item>
-            <name>PC_APPLICATION to Option_R or Russian (MS)</name>
-            <appendix>(+ When you type PC_APPLICATION only, change Input Source to Russian else Option_R)</appendix>
-            <identifier>remap.optionr_russian_ms</identifier>
-            <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-            <autogen>__KeyOverlaidModifier__ KeyCode::PC_APPLICATION, KeyCode::OPTION_R, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
-          </item>
-          <item>
-            <name>Option_R to Option_R or Russian</name>
-            <appendix>(+ When you type Option_R only, change Input Source to Russian)</appendix>
-            <identifier>remap.optionr_russian</identifier>
-            <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
-          </item>
-        </item>
-
-        <item>
-          <name>Space + Shift_R (Shift_L) to Russian (Dvorak)</name>
-          <appendix>(+ When you type Shift_R only, Sticky Shift_R)</appendix>
-          <identifier>remap.vkz_shiftr_shiftl_space_russian_dvorak</identifier>
-          <autogen>
-            __KeyToKey__
-            KeyCode::SPACE, ModifierFlag::SHIFT_R, ModifierFlag::NONE,
-            KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
-          </autogen>
-          <autogen>
-            __KeyToKey__
-            KeyCode::SPACE, ModifierFlag::SHIFT_L, ModifierFlag::NONE,
-            KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
-          </autogen>
-        </item>
-
-        <item>
-            <name>Command to Control+Space only in Emacs (MS)</name>
-            <identifier>private.command_set_mark_emacs</identifier>
-            <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-            <only>EMACS</only>
-            <autogen>
-                __KeyOverlaidModifier__
-                KeyCode::OPTION_R,
-                KeyCode::OPTION_R,
-                KeyCode::SPACE, ModifierFlag::CONTROL_L
-            </autogen>
-            <autogen>
-                __KeyOverlaidModifier__
-                KeyCode::COMMAND_L,
-                KeyCode::COMMAND_L,
-                KeyCode::SPACE, ModifierFlag::CONTROL_L
-            </autogen>
-        </item>
-
-        <item>
-            <name>Command to Control+Space only in Emacs (Air)</name>
-            <identifier>private.command_set_mark_emacs_air</identifier>
-            <only>EMACS</only>
-            <autogen>
-                __KeyOverlaidModifier__
-                KeyCode::COMMAND_L,
-                KeyCode::COMMAND_L,
-                KeyCode::SPACE, ModifierFlag::CONTROL_L
-            </autogen>
-        </item>
-
-        <item>
-          <name>Space to Control_L</name>
-          <appendix>(+ When you type Space only, send Space)</appendix>
-          <identifier>private.space_to_control_space</identifier>
-          <inputsource_only>DVORAK</inputsource_only>
-          <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::CONTROL_L, KeyCode::SPACE</autogen>
-        </item>
-
-        <item>
-          <name>z: Space to Control_L</name>
-          <appendix>(+ When you type Space only, send Space)</appendix>
-          <identifier>private.space_to_control_space_z</identifier>
-          <inputsource_only>zeRusski</inputsource_only>
-          <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::CONTROL_L, KeyCode::SPACE</autogen>
-        </item>
-
-        <item>
-          <name>OPTION_R to COMMAND_L (MS)</name>
-          <identifier>private.option_r</identifier>
-          <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-          <inputsource_only>DVORAK</inputsource_only>
           <autogen>
             __KeyOverlaidModifier__
             KeyCode::OPTION_R,
             KeyCode::COMMAND_L,
             KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN
           </autogen>
-        </item>
-
-        <item>
-            <name>Switch RU to Dvorak while any of CONTROL_L or COMMAND_L is pressed</name>
-            <identifier>private.modifier_to_dvorak_layout</identifier>
-            <block>
-                <inputsource_only>RUSSIAN</inputsource_only>
-
-                <autogen>
-                  __KeyOverlaidModifier__
-                  KeyCode::SPACE,
-                  KeyCode::CONTROL_L,
-                  KeyCode::SPACE,
-
-                  Option::KEYTOKEY_BEFORE_KEYDOWN,
-                  KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
-
-                  Option::KEYTOKEY_AFTER_KEYUP,
-                  KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
-                </autogen>
-
-                <autogen>
-                    --KeyToKey--
-                    KeyCode::CONTROL_L,
-                    KeyCode::CONTROL_L,
-
-                    Option::KEYTOKEY_BEFORE_KEYDOWN,
-                    KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
-
-                    Option::KEYTOKEY_AFTER_KEYUP,
-                    KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
-                </autogen>
-
-                <autogen>
-                    --KeyToKey--
-                    KeyCode::CONTROL_R,
-                    KeyCode::CONTROL_R,
-
-                    Option::KEYTOKEY_BEFORE_KEYDOWN,
-                    KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
-
-                    Option::KEYTOKEY_AFTER_KEYUP,
-                    KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
-                </autogen>
-
-                <autogen>
-                    --KeyToKey--
-                    KeyCode::COMMAND_L,
-                    KeyCode::COMMAND_L,
-
-                    Option::KEYTOKEY_BEFORE_KEYDOWN,
-                    KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
-
-                    Option::KEYTOKEY_AFTER_KEYUP,
-                    KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
-                </autogen>
-
-                <autogen>
-                    --KeyToKey--
-                    KeyCode::COMMAND_R,
-                    KeyCode::COMMAND_R,
-
-                    Option::KEYTOKEY_BEFORE_KEYDOWN,
-                    KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
-
-                    Option::KEYTOKEY_AFTER_KEYUP,
-                    KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
-                </autogen>
-
-                <block>
-                  <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                  <autogen>
-                    --KeyToKey--
-                    KeyCode::OPTION_R,
-                    KeyCode::COMMAND_L,
-
-                    Option::KEYTOKEY_BEFORE_KEYDOWN,
-                    KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
-
-                    Option::KEYTOKEY_AFTER_KEYUP,
-                    KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
-                  </autogen>
-
-                </block>
-
-            </block>
-        </item>
-
-        <item>
-            <name>Emacs like forward/backward [kill] word, undo.</name>
-            <identifier>private.emacs_forward_backward_word_undo</identifier>
-
-            <not>EMACS</not>
-            <uielementrole_only>AXTextArea, AXTextField, AXWebArea</uielementrole_only>
-
-            <autogen>
-                <!-- M-f forward-word -->
-                <!-- [osx::CMD-f] == [raw::CMD-Y] to [raw::OPT-CURSOR_RIGHT] == [osx::OPT-right] -->
-                --KeyToKey--
-                KeyCode::Y, ModifierFlag::COMMAND_L,
-                KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L
-            </autogen>
-
-            <autogen>
-                <!-- M-b backward-word -->
-                <!-- [osx::CMD-b] == [raw::CMD-N] to [raw::OPT-CURSOR_LEFT] == [osx::OPT-left] -->
-                --KeyToKey--
-                KeyCode::N, ModifierFlag::COMMAND_L,
-                KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L
-            </autogen>
-
-
-            <autogen>
-                <!-- M-d kill-word -->
-                <!-- [osx::CMD-d] == [raw::CMD-H] to [raw::OPT-FORWARD_DELETE] == [osx::OPT-FN-backspace] -->
-                --KeyToKey--
-                KeyCode::H, ModifierFlag::COMMAND_L,
-                KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L
-            </autogen>
-
-            <autogen>
-                <!-- CMD-del backward-kill-word -->
-                <!-- [osx::CMD-backspace] == [raw::CMD-DELETE] to [raw::OPT-DELETE] == [osx::OPT-backspace] -->
-                --KeyToKey--
-                KeyCode::DELETE, ModifierFlag::COMMAND_L,
-                KeyCode::DELETE, ModifierFlag::OPTION_L
-            </autogen>
-
-            <autogen>
-                <!-- C-/ undo -->
-                <!-- [osx::C-/] == [raw::C-BRACKET_LEFT] to [raw::CMD-SLASH] == [osx::CMD-z] -->
-                --KeyToKey--
-                KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L,
-                KeyCode::SLASH, ModifierFlag::COMMAND_L
-            </autogen>
-
-        </item>
-
-
-        <item>
-            <name>Emacs like find and cancel.</name>
-            <identifier>private.emacs_find_cancel</identifier>
-
-            <not>EMACS, FINDER, WIN7</not>
-
-            <autogen>
-                <!-- C-g send ESC -->
-                <!-- [osx::C-g] == [raw::C-U] to [raw::ESCAPE] == [osx::Esc] -->
-                --KeyToKey--
-                KeyCode::U, ModifierFlag::CONTROL_L,
-                KeyCode::ESCAPE
-            </autogen>
-
-            <autogen>
-                <!-- C-s find -->
-                <!-- [osx::C-s] == [raw::C-;] to [raw::CMD-y] == [osx::CMD-f] -->
-                --KeyToKey--
-                KeyCode::SEMICOLON, ModifierFlag::CONTROL_L,
-                KeyCode::Y, ModifierFlag::COMMAND_L,
-            </autogen>
-
-            <autogen>
-                <!-- C-r find previous -->
-                <!-- [osx::C-r] == [raw::C-o] to [raw::CMD-SHIFT-u] == [osx::CMD-SHIFT-g] -->
-                --KeyToKey--
-                KeyCode::O, ModifierFlag::CONTROL_L,
-                KeyCode::U, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L
-            </autogen>
-
-        </item>
-
-        <!-- Version 2  -->
-
-        <item>
-
-            <name>Replace number keys with symbols v2</name>
-            <identifier>vkz.remap.number_row_v2</identifier>
-
-            <inputsource_only>DVORAK</inputsource_only>
-            <!-- <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only> -->
-
-            <!-- Change BRACKET_RIGHT to % (^) -->
-            <autogen>
-                __KeyToKey__
-                KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-                KeyCode::KEY_6, ModifierFlag::SHIFT_L,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::BRACKET_RIGHT,
-                KeyCode::KEY_5, ModifierFlag::SHIFT_L
-            </autogen>
-
-            <!-- Change Shift \ to dollar () -->
-            <autogen>
-                __KeyToKey__
-                KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-                KeyCode::KEY_4, ModifierFlag::SHIFT_L,
-            </autogen>
-
-            <!-- Swap 1 and Shift 1 -->
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_1, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
-                KeyCode::KEY_1, ModifierFlag::CONTROL_L,
-            </autogen>
-            <autogen>
-                <!-- Leave C-[1-4] as is so switching Expose Spaces works -->
-                __KeyToKey__
-                KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                KeyCode::KEY_1,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_1,
-                KeyCode::KEY_1, ModifierFlag::SHIFT_L,
-            </autogen>
-
-            <!-- Swap 2 and Shift 2 -->
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_2, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
-                KeyCode::KEY_2, ModifierFlag::CONTROL_L,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                KeyCode::KEY_2,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_2,
-                KeyCode::KEY_2, ModifierFlag::SHIFT_L,
-            </autogen>
-
-            <!-- Swap 3 and Shift 3 -->
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_3, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
-                KeyCode::KEY_3, ModifierFlag::CONTROL_L,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                KeyCode::KEY_3,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_3,
-                KeyCode::KEY_3, ModifierFlag::SHIFT_L,
-            </autogen>
-
-            <!-- Change 4 to ampersand -->
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_4, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
-                KeyCode::KEY_4, ModifierFlag::CONTROL_L,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                KeyCode::KEY_4,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_4,
-                KeyCode::KEY_7, ModifierFlag::SHIFT_L
-            </autogen>
-
-            <!-- Change 5 to pipe -->
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                KeyCode::KEY_5,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_5,
-                KeyCode::BACKSLASH, ModifierFlag::SHIFT_L
-            </autogen>
-
-            <!-- Change 6 to + -->
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                KeyCode::KEY_6,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_6,
-                KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L
-            </autogen>
-
-            <!-- Change 7 to = -->
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                KeyCode::KEY_7,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_7,
-                KeyCode::BRACKET_RIGHT,
-            </autogen>
-
-            <!-- Swap 8 and Shift 8 -->
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                KeyCode::KEY_8,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_8,
-                KeyCode::KEY_8, ModifierFlag::SHIFT_L,
-            </autogen>
-
-            <!-- Swap 9 and Shift 9 -->
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-                KeyCode::MINUS, ModifierFlag::SHIFT_L,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_9,
-                KeyCode::KEY_9, ModifierFlag::SHIFT_L,
-            </autogen>
-
-            <!-- Swap 0 and Shift 0 -->
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                KeyCode::EQUAL, ModifierFlag::SHIFT_L,
-            </autogen>
-            <autogen>
-                __KeyToKey__
-                KeyCode::KEY_0,
-                KeyCode::KEY_0, ModifierFlag::SHIFT_L,
-            </autogen>
-
-        </item>
-
-        <item>
-            <name>Replace number keys with symbols.</name>
-
-            <item>
-                <name>Change BRACKET_RIGHT to % (^)</name>
-                <identifier>vkz.remap.bracket_right_percent</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-                    KeyCode::KEY_6, ModifierFlag::SHIFT_L,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::BRACKET_RIGHT,
-                    KeyCode::KEY_5, ModifierFlag::SHIFT_L
-                </autogen>
-            </item>
-
-            <item>
-                <name>Change Shift \ to dollar ()</name>
-                <identifier>vkz.remap.shift_backslash_dollar</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-                    KeyCode::KEY_4, ModifierFlag::SHIFT_L,
-                </autogen>
-            </item>
-
-            <item>
-                <name>Swap 1 and Shift 1</name>
-                <identifier>vkz.remap.one_exclamation</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_1, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
-                    KeyCode::KEY_1, ModifierFlag::CONTROL_L,
-                </autogen>
-                <autogen>
-                    <!-- Leave C-[1-4] as is so switching Expose Spaces works -->
-                    __KeyToKey__
-                    KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_1,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_1,
-                    KeyCode::KEY_1, ModifierFlag::SHIFT_L,
-                </autogen>
-            </item>
-
-            <item>
-                <name>Swap 2 and Shift 2</name>
-                <identifier>vkz.remap.two_at</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_2, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
-                    KeyCode::KEY_2, ModifierFlag::CONTROL_L,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_2,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_2,
-                    KeyCode::KEY_2, ModifierFlag::SHIFT_L,
-                </autogen>
-            </item>
-
-            <item>
-                <name>Swap 3 and Shift 3</name>
-                <identifier>vkz.remap.three_hash</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_3, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
-                    KeyCode::KEY_3, ModifierFlag::CONTROL_L,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_3,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_3,
-                    KeyCode::KEY_3, ModifierFlag::SHIFT_L,
-                </autogen>
-            </item>
-
-            <item>
-                <name>Change 4 to ampersand</name>
-                <identifier>vkz.remap.four_ampersand</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_4, ModifierFlag::CONTROL_L, ModifierFlag::NONE,
-                    KeyCode::KEY_4, ModifierFlag::CONTROL_L,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_4,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_4,
-                    KeyCode::KEY_7, ModifierFlag::SHIFT_L
-                </autogen>
-            </item>
-
-            <item>
-                <name>Change 5 to pipe</name>
-                <identifier>vkz.remap.five_pipe</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_5,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_5,
-                    KeyCode::BACKSLASH, ModifierFlag::SHIFT_L
-                </autogen>
-            </item>
-
-            <item>
-                <name>Change 6 to +</name>
-                <identifier>vkz.remap.six_plus</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_6,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_6,
-                    KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L
-                </autogen>
-            </item>
-
-            <item>
-                <name>Change 7 to =</name>
-                <identifier>vkz.remap.seven_equal</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_7,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_7,
-                    KeyCode::BRACKET_RIGHT,
-                </autogen>
-            </item>
-
-            <item>
-                <name>Swap 8 and Shift 8</name>
-                <identifier>vkz.remap.eight_star</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_8,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_8,
-                    KeyCode::KEY_8, ModifierFlag::SHIFT_L,
-                </autogen>
-            </item>
-
-            <item>
-                <name>Swap 9 and Shift 9</name>
-                <identifier>vkz.remap.zero_left_paren</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::MINUS,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_9,
-                    KeyCode::KEY_9, ModifierFlag::SHIFT_L,
-                </autogen>
-            </item>
-
-            <item>
-                <name>Swap 0 and Shift 0</name>
-                <identifier>vkz.remap.nine_left_paren</identifier>
-                <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_0,
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::KEY_0,
-                    KeyCode::KEY_0, ModifierFlag::SHIFT_L,
-                </autogen>
-            </item>
-
-
-
-        </item>
-
-
-        <!-- <item> -->
-        <!--     <name>Key chords</name> -->
-        <!--     <item> -->
-        <!--         <name>Left curly {</name> -->
-        <!--         <identifier>vkz.chord.left_curly</identifier> -->
-        <!--         <lastpressedphysicalkey_only>KeyCode::I</lastpressedphysicalkey_only> -->
-        <!--         <elapsedtimesincelastpressed_lessthan>Millisecond::RawValue::1000</elapsedtimesincelastpressed_lessthan> -->
-        <!--         <autogen> -->
-        <!--             __KeyToKey__ KeyCode::KEY_9, KeyCode::MINUS, -->
-        <!--         </autogen> -->
-        <!--     </item> -->
-        <!-- </item> -->
-
-        <item>
-            <name>Global C-m sends RETURN.</name>
-            <identifier>private.global_command_m</identifier>
-            <not>FINDER</not>
-
-            <autogen>
-                <!-- C-m RETURN -->
-                --KeyToKey--
-                KeyCode::M, ModifierFlag::CONTROL_L,
-                KeyCode::RETURN
-            </autogen>
-        </item>
-
-        <item>
-            <name>Lock screen with ScrLk</name>
-            <identifier>vkz.remap.scrlk</identifier>
-            <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-            <autogen>
-                __KeyToKey__
-                KeyCode::F14,
-                KeyCode::PC_POWER, ModifierFlag::CONTROL_L, ModifierFlag::SHIFT_L,
-            </autogen>
-        </item>
-
-
-
+        </block>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_R,
+          KeyCode::COMMAND_R,
+          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN
+        </autogen>
+      </block>
     </item>
 
+    <item>
+      <name>Don't let Russian input source mess with modifier keys</name>
+      <identifier>private.modifier_to_dvorak_layout</identifier>
+      <block>
+        <inputsource_only>RUSSIAN</inputsource_only>
 
+        <!-- SPACE as CONTROL back -->
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::SPACE,
+          KeyCode::CONTROL_L,
+          KeyCode::SPACE,
 
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
 
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+        </autogen>
+
+        <!-- CONTROL_L back -->
+        <autogen>
+          --KeyToKey--
+          KeyCode::CONTROL_L,
+          KeyCode::CONTROL_L,
+
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+        </autogen>
+
+        <!-- CONTROL_R back -->
+        <autogen>
+          --KeyToKey--
+          KeyCode::CONTROL_R,
+          KeyCode::CONTROL_R,
+
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+        </autogen>
+
+        <!-- COMMAND_L back -->
+        <autogen>
+          --KeyToKey--
+          KeyCode::COMMAND_L,
+          KeyCode::COMMAND_L,
+
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+        </autogen>
+
+        <!-- COMMAND_R back -->
+        <autogen>
+          --KeyToKey--
+          KeyCode::COMMAND_R,
+          KeyCode::COMMAND_R,
+
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+        </autogen>
+
+        <!-- COMMAND_R on MS back -->
+        <block>
+          <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+          <autogen>
+            --KeyToKey--
+            KeyCode::OPTION_R,
+            KeyCode::COMMAND_L,
+
+            Option::KEYTOKEY_BEFORE_KEYDOWN,
+            KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+
+            Option::KEYTOKEY_AFTER_KEYUP,
+            KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+          </autogen>
+        </block>
+
+      </block>
+    </item>
+
+    <item>
+      <name>CONTROL-m sends RETURN.</name>
+      <identifier>private.global_command_m</identifier>
+      <not>FINDER</not>
+      <autogen>
+        --KeyToKey--
+        KeyCode::M, ModifierFlag::CONTROL_L,
+        KeyCode::RETURN
+      </autogen>
+    </item>
+
+    <include path="{{ ENV_HOME }}/.personal_configs/emacs-global.xml" />
+    <include path="{{ ENV_HOME }}/.personal_configs/numbers.xml" />
+    <include path="{{ ENV_HOME }}/.personal_configs/vkz-launcher.xml" />
+
+  </item>
 
 </root>
