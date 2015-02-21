@@ -70,6 +70,16 @@
     <!--                                                                           -->
     <!-- * [osx:C-s] == [raw:C-SEMICOLON] to [raw:CMD-Y] == [osx:CMD-f]            -->
 
+    <inputsourcedef>
+      <name>zeRusski</name>
+      <inputsourceid_prefix>org.unknown.keylayout.zeRusski</inputsourceid_prefix>
+    </inputsourcedef>
+
+    <vkchangeinputsourcedef>
+      <name>KeyCode::VK_CHANGE_INPUTSOURCE_zeRusski</name>
+      <inputsourceid_equal>org.unknown.keylayout.zeRusski</inputsourceid_equal>
+    </vkchangeinputsourcedef>
+
     <include path="{{ ENV_HOME }}/.personal_configs/vkz-launcher.xml" />
 
     <!-- VirtualBox Win7 VM specific stuff -->
@@ -115,14 +125,9 @@
         </deviceproductdef>
 
         <item>
-          <name>OPTION_R to COMMAND_R, CONTROL_L to FN (MS)</name>
-          <identifier>private.option_r_command_r</identifier>
+          <name>CONTROL_L to FN (MS)</name>
+          <identifier>private.control_l_fn</identifier>
           <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-          <autogen>
-            --KeyToKey--
-            KeyCode::OPTION_R,
-            KeyCode::COMMAND_R,
-          </autogen>
           <autogen>
             --KeyToKey--
             KeyCode::CONTROL_L,
@@ -132,7 +137,7 @@
 
         <include path="{{ ENV_HOME }}/.personal_configs/numbers.xml" />
 
-        
+
         <item>
           <name>Change Option_L Key to Dvorak</name>
           <item>
@@ -215,6 +220,27 @@
         </item>
 
         <item>
+          <name>z: Space to Control_L</name>
+          <appendix>(+ When you type Space only, send Space)</appendix>
+          <identifier>private.space_to_control_space_z</identifier>
+          <inputsource_only>zeRusski</inputsource_only>
+          <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::CONTROL_L, KeyCode::SPACE</autogen>
+        </item>
+
+        <item>
+          <name>OPTION_R to COMMAND_L (MS)</name>
+          <identifier>private.option_r</identifier>
+          <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+          <inputsource_only>DVORAK</inputsource_only>
+          <autogen>
+            __KeyOverlaidModifier__
+            KeyCode::OPTION_R,
+            KeyCode::COMMAND_L,
+            KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN
+          </autogen>
+        </item>
+
+        <item>
             <name>Switch RU to Dvorak while any of CONTROL_L or COMMAND_L is pressed</name>
             <identifier>private.modifier_to_dvorak_layout</identifier>
             <block>
@@ -280,6 +306,22 @@
                     Option::KEYTOKEY_AFTER_KEYUP,
                     KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
                 </autogen>
+
+                <block>
+                  <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+                  <autogen>
+                    --KeyToKey--
+                    KeyCode::OPTION_R,
+                    KeyCode::COMMAND_L,
+
+                    Option::KEYTOKEY_BEFORE_KEYDOWN,
+                    KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+
+                    Option::KEYTOKEY_AFTER_KEYUP,
+                    KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
+                  </autogen>
+
+                </block>
 
             </block>
         </item>
@@ -516,12 +558,12 @@
             <!-- Swap 9 and Shift 9 -->
             <autogen>
                 __KeyToKey__
-                KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                KeyCode::KEY_9,
+                KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+                KeyCode::MINUS, ModifierFlag::SHIFT_L,
             </autogen>
             <autogen>
                 __KeyToKey__
-                KeyCode::KEY_9, ,
+                KeyCode::KEY_9,
                 KeyCode::KEY_9, ModifierFlag::SHIFT_L,
             </autogen>
 
@@ -529,7 +571,7 @@
             <autogen>
                 __KeyToKey__
                 KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                KeyCode::KEY_0,
+                KeyCode::EQUAL, ModifierFlag::SHIFT_L,
             </autogen>
             <autogen>
                 __KeyToKey__
@@ -725,7 +767,7 @@
                 <autogen>
                     __KeyToKey__
                     KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT ,
-                    KeyCode::KEY_9,
+                    KeyCode::MINUS,
                 </autogen>
                 <autogen>
                     __KeyToKey__

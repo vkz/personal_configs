@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+
+   
+    <name>Numbers Overlay</name>
+    <item>
+      <name>Home Row Numbers</name>
+      <appendix>Overlay 1234567890 under right-hand</appendix>
+      <identifier vk_config="true">notsave.fn_numbers</identifier>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, KeyCode::MINUS</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_0, KeyCode::EQUAL</autogen>
+      <autogen>__KeyToKey__ KeyCode::U, KeyCode::KEY_1</autogen>
+      <autogen>__KeyToKey__ KeyCode::I, KeyCode::KEY_2</autogen>
+      <autogen>__KeyToKey__ KeyCode::O, KeyCode::KEY_3</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::KEY_4</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::KEY_5</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::KEY_6</autogen>
+      <autogen>__KeyToKey__ KeyCode::M, KeyCode::KEY_7</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, KeyCode::KEY_7</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMA, KeyCode::KEY_8</autogen>
+      <autogen>__KeyToKey__ KeyCode::DOT, KeyCode::KEY_9</autogen>
+      <autogen>__KeyToKey__ KeyCode::H, KeyCode::KEY_0</autogen>
+    </item>
+
+    <item>
+      <name>My very special overlayed OPTION_L</name>
+      <appendix>Option + Control/mod => Command + Control/mod (emacs)</appendix>
+      <appendix>Option + Shift/mod   => switch to Dvorak</appendix>
+      <appendix>Option hold          => numbers right hand</appendix>
+      <appendix>Option alone         => Space + Option/mod (toggle input source)</appendix>
+      <identifier>remap.caps_overlay</identifier>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, ModifierFlag::CONTROL_L, KeyCode::COMMAND_L, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_fn_numbers, KeyCode:: VK_CHANGE_INPUTSOURCE_DVORAK</autogen>
+    </item>
+
+  </item>
+</root>
