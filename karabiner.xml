@@ -102,7 +102,7 @@
       <name>Overlaid OPTION_L</name>
       <appendix>Switch to Dvorak when typed alone</appendix>
       <identifier>remap.optionl_dvorak</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK</autogen>
     </item>
 
     <item>
@@ -152,7 +152,7 @@
           KeyCode::SPACE,
 
           Option::KEYTOKEY_BEFORE_KEYDOWN,
-          KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK,
 
           Option::KEYTOKEY_AFTER_KEYUP,
           KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
@@ -165,7 +165,7 @@
           KeyCode::CONTROL_L,
 
           Option::KEYTOKEY_BEFORE_KEYDOWN,
-          KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK,
 
           Option::KEYTOKEY_AFTER_KEYUP,
           KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
@@ -178,7 +178,7 @@
           KeyCode::CONTROL_R,
 
           Option::KEYTOKEY_BEFORE_KEYDOWN,
-          KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK,
 
           Option::KEYTOKEY_AFTER_KEYUP,
           KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
@@ -191,7 +191,7 @@
           KeyCode::COMMAND_L,
 
           Option::KEYTOKEY_BEFORE_KEYDOWN,
-          KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK,
 
           Option::KEYTOKEY_AFTER_KEYUP,
           KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
@@ -204,7 +204,7 @@
           KeyCode::COMMAND_R,
 
           Option::KEYTOKEY_BEFORE_KEYDOWN,
-          KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK,
 
           Option::KEYTOKEY_AFTER_KEYUP,
           KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
@@ -219,7 +219,7 @@
             KeyCode::COMMAND_L,
 
             Option::KEYTOKEY_BEFORE_KEYDOWN,
-            KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+            KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK,
 
             Option::KEYTOKEY_AFTER_KEYUP,
             KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
