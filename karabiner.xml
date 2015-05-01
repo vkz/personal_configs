@@ -73,12 +73,12 @@
   <!-- Custom zeRusski layouts -->
   <inputsourcedef>
     <name>ZEDVORAK</name>
-    <inputsourceid_prefix>org.unknown.keylayout.zeDvorak</inputsourceid_prefix>
+    <inputsourceid_prefix>org.unknown.keylayout.zeDvorak07</inputsourceid_prefix>
   </inputsourcedef>
 
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK</name>
-    <inputsourceid_equal>org.unknown.keylayout.zeDvorak</inputsourceid_equal>
+    <inputsourceid_equal>org.unknown.keylayout.zeDvorak07</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <!-- MS external keyboard -->
@@ -99,10 +99,21 @@
     <include path="{{ ENV_HOME }}/.personal_configs/vm.xml" />
 
     <item>
-      <name>Overlaid OPTION_L</name>
-      <appendix>Switch to Dvorak when typed alone</appendix>
-      <identifier>remap.optionl_dvorak</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK</autogen>
+      <name>Overlaid Comma</name>
+      <appendix>Holding , is holding OPTION</appendix>
+      <identifier>private.holding_comma</identifier>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::W, ModifierFlag::CAPSLOCK,
+        KeyCode::OPTION_L, ModifierFlag::CAPSLOCK,
+        KeyCode::W, ModifierFlag::CAPSLOCK,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::W,
+        KeyCode::OPTION_L,
+        KeyCode::W
+      </autogen>
     </item>
 
     <item>
@@ -110,123 +121,18 @@
       <appendix>Insert SPACE when typed alone</appendix>
       <appendix>CONTROL in key combinations</appendix>
       <identifier>private.space_to_control_space</identifier>
-      <inputsource_not>RUSSIAN</inputsource_not>
       <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::CONTROL_L, KeyCode::SPACE</autogen>
     </item>
 
     <item>
-      <name>Overlaid COMMAND_R</name>
-      <appendix>Switch to Russian when typed alone</appendix>
+      <name>Fix COMMAND_R on MS</name>
       <identifier>private.option_r</identifier>
-      <inputsource_not>RUSSIAN</inputsource_not>
-      <block>
-        <block>
-          <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-          <autogen>
-            __KeyOverlaidModifier__
-            KeyCode::OPTION_R,
-            KeyCode::COMMAND_L,
-            KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN
-          </autogen>
-        </block>
-        <autogen>
-          __KeyOverlaidModifier__
-          KeyCode::COMMAND_R,
-          KeyCode::COMMAND_R,
-          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN
-        </autogen>
-      </block>
-    </item>
-
-    <item>
-      <name>Don't let Russian input source mess with modifier keys</name>
-      <identifier>private.modifier_to_dvorak_layout</identifier>
-      <block>
-        <inputsource_only>RUSSIAN</inputsource_only>
-
-        <!-- SPACE as CONTROL back -->
-        <autogen>
-          __KeyOverlaidModifier__
-          KeyCode::SPACE,
-          KeyCode::CONTROL_L,
-          KeyCode::SPACE,
-
-          Option::KEYTOKEY_BEFORE_KEYDOWN,
-          KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK,
-
-          Option::KEYTOKEY_AFTER_KEYUP,
-          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
-        </autogen>
-
-        <!-- CONTROL_L back -->
-        <autogen>
-          --KeyToKey--
-          KeyCode::CONTROL_L,
-          KeyCode::CONTROL_L,
-
-          Option::KEYTOKEY_BEFORE_KEYDOWN,
-          KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK,
-
-          Option::KEYTOKEY_AFTER_KEYUP,
-          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
-        </autogen>
-
-        <!-- CONTROL_R back -->
-        <autogen>
-          --KeyToKey--
-          KeyCode::CONTROL_R,
-          KeyCode::CONTROL_R,
-
-          Option::KEYTOKEY_BEFORE_KEYDOWN,
-          KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK,
-
-          Option::KEYTOKEY_AFTER_KEYUP,
-          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
-        </autogen>
-
-        <!-- COMMAND_L back -->
-        <autogen>
-          --KeyToKey--
-          KeyCode::COMMAND_L,
-          KeyCode::COMMAND_L,
-
-          Option::KEYTOKEY_BEFORE_KEYDOWN,
-          KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK,
-
-          Option::KEYTOKEY_AFTER_KEYUP,
-          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
-        </autogen>
-
-        <!-- COMMAND_R back -->
-        <autogen>
-          --KeyToKey--
-          KeyCode::COMMAND_R,
-          KeyCode::COMMAND_R,
-
-          Option::KEYTOKEY_BEFORE_KEYDOWN,
-          KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK,
-
-          Option::KEYTOKEY_AFTER_KEYUP,
-          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
-        </autogen>
-
-        <!-- COMMAND_R on MS back -->
-        <block>
           <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
           <autogen>
             --KeyToKey--
             KeyCode::OPTION_R,
             KeyCode::COMMAND_L,
-
-            Option::KEYTOKEY_BEFORE_KEYDOWN,
-            KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK,
-
-            Option::KEYTOKEY_AFTER_KEYUP,
-            KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN,
           </autogen>
-        </block>
-
-      </block>
     </item>
 
     <item>
@@ -241,7 +147,7 @@
     </item>
 
     <include path="{{ ENV_HOME }}/.personal_configs/emacs-global.xml" />
-    <include path="{{ ENV_HOME }}/.personal_configs/numbers.xml" />
+    <!-- <include path="{{ ENV_HOME }}/.personal_configs/numbers.xml" /> -->
     <include path="{{ ENV_HOME }}/.personal_configs/vkz-launcher.xml" />
 
   </item>

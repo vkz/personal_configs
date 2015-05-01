@@ -79,7 +79,20 @@
 
       <autogen>
         __KeyOverlaidModifier__
-        KeyCode::S, ModifierFlag::NONE,
+        KeyCode::S, ModifierFlag::CAPSLOCK,
+
+        @begin
+        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_vkz_notsave_launcher_mode_v2, ModifierFlag::CAPSLOCK,
+        @end
+
+        @begin
+        KeyCode::S, ModifierFlag::CAPSLOCK,
+        @end
+      </autogen>
+
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::S,
 
         @begin
         KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_vkz_notsave_launcher_mode_v2,
