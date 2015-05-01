@@ -104,15 +104,9 @@
       <identifier>private.holding_comma</identifier>
       <autogen>
         __KeyOverlaidModifier__
-        KeyCode::W, ModifierFlag::CAPSLOCK,
-        KeyCode::OPTION_L, ModifierFlag::CAPSLOCK,
-        KeyCode::W, ModifierFlag::CAPSLOCK,
-      </autogen>
-      <autogen>
-        __KeyOverlaidModifier__
         KeyCode::W,
         KeyCode::OPTION_L,
-        KeyCode::W
+        KeyCode::W,
       </autogen>
     </item>
 
