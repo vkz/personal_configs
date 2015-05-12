@@ -4,6 +4,7 @@
 ############################################
 
 export PS1="\u@:\w$ "
+export EMAIL="vladilen.kozin@gmail.com"
 
 # path
 PATH="/usr/local/bin:${PATH}"
@@ -53,7 +54,7 @@ export HOMEBREW_EDITOR=$EDITOR
 ssh-add ~/.ssh/id-rsa > /dev/null 2> /dev/null || true
 
 # # ocaml
-# eval `opam config env`
+eval `opam config env`;
 
 # # mono
 # PKG_CONFIG_PATH=/Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig; export PKG_CONFIG_PATH
@@ -66,18 +67,6 @@ NODE_PATH=/usr/local/lib/node_modules; export NODE_PATH;
 # # shell completions
 for f in $(brew --prefix)/etc/bash_completion.d/*; do source $f; done
 
-# # ruby
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function
-
-# if [ -f $(brew --prefix)/etc/bash_completion ]; then
-#   . $(brew --prefix)/etc/bash_completion
-# fi
-
-
-# if [ -f $(brew --prefix)/etc/bash_completion.d/lein-completion.bash ]; then
-#     . $(brew --prefix)/etc/bash_completion.d/lein-completion.bash
-# fi
-
 # #source racket-completion.bash for raco completions
 # if [ -f /Applications/Racket/share/pkgs/shell-completion/racket-completion.bash ]; then
 #   . /Applications/Racket/share/pkgs/shell-completion/racket-completion.bash
@@ -86,9 +75,4 @@ for f in $(brew --prefix)/etc/bash_completion.d/*; do source $f; done
 # #source opam (caml) completion
 # if [ -f $(brew --prefix)/etc/bash_completion.d/opam_completion.sh ]; then
 #     . $(brew --prefix)/etc/bash_completion.d/opam_completion.sh
-# fi
-
-# #source leiningen
-# if [ -f $(brew --prefix)/etc/bash_completion.d/lein-completion.bash ]; then
-#     . $(brew --prefix)/etc/bash_completion.d/lein-completion.bash
 # fi
