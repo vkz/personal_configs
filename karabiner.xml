@@ -73,12 +73,12 @@
   <!-- Custom zeRusski layouts -->
   <inputsourcedef>
     <name>ZEDVORAK</name>
-    <inputsourceid_prefix>org.unknown.keylayout.zeDvorak07</inputsourceid_prefix>
+    <inputsourceid_prefix>org.unknown.keylayout.zeDvorak14</inputsourceid_prefix>
   </inputsourcedef>
 
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_ZEDVORAK</name>
-    <inputsourceid_equal>org.unknown.keylayout.zeDvorak07</inputsourceid_equal>
+    <inputsourceid_equal>org.unknown.keylayout.zeDvorak14</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <!-- MS external keyboard -->
