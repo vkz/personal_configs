@@ -96,6 +96,27 @@
   <item>
     <name>vkz</name>
 
+    <item>
+      <name>Crazy overlaid sticky COMMAND</name>
+      <appendix>Hold COMMAND to get COMMAND</appendix>
+      <appendix>Type COMMAND to get sticky SHIFT</appendix>
+      <identifier>private.crazy_command</identifier>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::COMMAND_R,
+        KeyCode::COMMAND_L,
+        KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+        KeyCode::VK_STICKY_SHIFT_R,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::COMMAND_L,
+        KeyCode::COMMAND_L,
+        KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+        KeyCode::VK_STICKY_SHIFT_L,
+      </autogen>
+    </item>
+
     <include path="{{ ENV_HOME }}/.personal_configs/vm.xml" />
 
     <item>
@@ -119,13 +140,15 @@
     </item>
 
     <item>
-      <name>Fix COMMAND_R on MS</name>
+      <name>Fix COMMAND_R on MS (crazy)</name>
       <identifier>private.option_r</identifier>
           <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
           <autogen>
-            --KeyToKey--
+            __KeyOverlaidModifier__
             KeyCode::OPTION_R,
             KeyCode::COMMAND_L,
+            KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+            KeyCode::VK_STICKY_SHIFT_R,
           </autogen>
     </item>
 
