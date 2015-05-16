@@ -97,10 +97,12 @@
     <name>vkz</name>
 
     <item>
-      <name>Crazy overlaid sticky COMMAND</name>
+      <name>Crazy overlaid sticky COMMAND and SHIFT</name>
       <appendix>Hold COMMAND to get COMMAND</appendix>
       <appendix>Type COMMAND to get sticky SHIFT</appendix>
-      <identifier>private.crazy_command</identifier>
+      <appendix>Hold SHIFT to get OPTION</appendix>
+      <appendix>Type SHIFT to get sticky OPTION</appendix>
+      <identifier>private.crazy_command_shift</identifier>
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::COMMAND_R,
@@ -114,6 +116,20 @@
         KeyCode::COMMAND_L,
         KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
         KeyCode::VK_STICKY_SHIFT_L,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SHIFT_R,
+        KeyCode::OPTION_L,
+        KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+        KeyCode::VK_STICKY_OPTION_L,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SHIFT_L,
+        KeyCode::OPTION_L,
+        KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+        KeyCode::VK_STICKY_OPTION_L,
       </autogen>
     </item>
 
