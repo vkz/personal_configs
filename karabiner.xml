@@ -106,7 +106,7 @@
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::COMMAND_R,
-        KeyCode::COMMAND_L,
+        KeyCode::SHIFT_R,
         KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
         KeyCode::VK_STICKY_SHIFT_R,
       </autogen>
@@ -130,6 +130,11 @@
         KeyCode::OPTION_L,
         KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
         KeyCode::VK_STICKY_OPTION_L,
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::OPTION_L,
+        KeyCode::SHIFT_L,
       </autogen>
     </item>
 
@@ -162,7 +167,7 @@
           <autogen>
             __KeyOverlaidModifier__
             KeyCode::OPTION_R,
-            KeyCode::COMMAND_L,
+            KeyCode::SHIFT_R,
             KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
             KeyCode::VK_STICKY_SHIFT_R,
           </autogen>
