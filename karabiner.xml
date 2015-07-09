@@ -97,6 +97,23 @@
     <name>vkz</name>
 
     <item>
+      <name>CapsLock</name>
+      <appendix> CapsLock alone acts as CapsLock. </appendix>
+      <appendix> CapsLock with any other key acts as Command. </appendix>
+      <appendix> ------------------------------------------------ </appendix>
+      <appendix> NB CapsLock needs to be remapped to F19 in Seil. </appendix>
+      <appendix> NB Set CapsLock to NO ACTION in System Settings. </appendix>
+      <appendix> ------------------------------------------------ </appendix>
+      <identifier>private.capslock</identifier>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::F19,
+        KeyCode::COMMAND_L,
+        KeyCode::CAPSLOCK,
+      </autogen>
+    </item>
+
+    <item>
       <name>Crazy overlaid sticky COMMAND and SHIFT</name>
       <appendix>Hold COMMAND to get COMMAND</appendix>
       <appendix>Type COMMAND to get sticky SHIFT</appendix>
@@ -110,13 +127,23 @@
         KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
         KeyCode::VK_STICKY_SHIFT_R,
       </autogen>
+
+      <!-- <autogen> -->
+      <!--   __KeyOverlaidModifier__ -->
+      <!--   KeyCode::COMMAND_L, -->
+      <!--   KeyCode::COMMAND_L, -->
+      <!--   KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON, -->
+      <!--   KeyCode::VK_STICKY_SHIFT_L, -->
+      <!-- </autogen> -->
+
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::COMMAND_L,
-        KeyCode::COMMAND_L,
+        KeyCode::SHIFT_L,
         KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
         KeyCode::VK_STICKY_SHIFT_L,
       </autogen>
+
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::SHIFT_R,
@@ -124,6 +151,7 @@
         KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
         KeyCode::VK_STICKY_OPTION_L,
       </autogen>
+
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::SHIFT_L,
@@ -134,8 +162,24 @@
       <autogen>
         --KeyToKey--
         KeyCode::OPTION_L,
-        KeyCode::SHIFT_L,
+        KeyCode::COMMAND_L,
       </autogen>
+      <block>
+        <device_only>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_only>
+        <autogen>
+          --KeyToKey--
+          KeyCode::OPTION_R,
+          KeyCode::COMMAND_R,
+        </autogen>
+      </block>
+      <block>
+        <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+        <autogen>
+          --KeyToKey--
+          KeyCode::PC_APPLICATION,
+          KeyCode::COMMAND_L,
+        </autogen>
+      </block>
     </item>
 
     <include path="{{ ENV_HOME }}/.personal_configs/vm.xml" />
