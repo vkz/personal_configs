@@ -97,19 +97,39 @@
     <name>vkz</name>
 
     <item>
-      <name>CapsLock</name>
-      <appendix> CapsLock alone acts as CapsLock. </appendix>
-      <appendix> CapsLock with any other key acts as Command. </appendix>
+      <name>CapsLock and RETURN</name>
+      <appendix> CAPSLOCK alone acts as CAPSLOCK. </appendix>
+      <appendix> RETURN alone acts as RETURN. </appendix>
+      <appendix> CAPSLOCK and RETURN with COMMAND act as COMMAND + CONTROL. </appendix>
+      <appendix> RETURN with COMMAND alone remains just that. </appendix>
+      <appendix> With any other key both act as OPTION. </appendix>
       <appendix> ------------------------------------------------ </appendix>
-      <appendix> NB CapsLock needs to be remapped to F19 in Seil. </appendix>
-      <appendix> NB Set CapsLock to NO ACTION in System Settings. </appendix>
+      <appendix> NB CAPSLOCK needs to be remapped to F19 in Seil. </appendix>
+      <appendix> NB Set CAPSLOCK to NO ACTION in System Settings. </appendix>
       <appendix> ------------------------------------------------ </appendix>
       <identifier>private.capslock</identifier>
       <autogen>
+        __KeyToKey__
+        KeyCode::F19, ModifierFlag::CONTROL_L,
+        KeyCode::COMMAND_L, ModifierFlag::CONTROL_L,
+      </autogen>
+      <autogen>
         __KeyOverlaidModifier__
         KeyCode::F19,
-        KeyCode::COMMAND_L,
+        KeyCode::OPTION_L,
         KeyCode::CAPSLOCK,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::RETURN, ModifierFlag::CONTROL_L,
+        KeyCode::COMMAND_L, ModifierFlag::CONTROL_L,
+        KeyCode::RETURN, ModifierFlag::CONTROL_L,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::RETURN,
+        KeyCode::OPTION_R,
+        KeyCode::RETURN,
       </autogen>
     </item>
 
