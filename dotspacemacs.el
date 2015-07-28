@@ -20,6 +20,9 @@
      ;; auto-completion
      ;; better-defaults
      emacs-lisp
+     (auto-completion :variables
+                      auto-completion-enable-help-tooltip t)
+     racket
      ;; git
      ;; markdown
      ;; org
@@ -166,7 +169,7 @@ before layers configuration."
 layers configuration."
   ;; (setq powerline-default-separator 'roundstub)
   (setq powerline-default-separator 'arrow)
-  (message "HELLO!!!")
+  (global-company-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
