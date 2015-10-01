@@ -32,6 +32,11 @@
     </vkopenurldef>
 
     <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_Telegram</name>
+        <url type="file">/Applications/Telegram.app</url>
+    </vkopenurldef>
+
+    <vkopenurldef>
         <name>KeyCode::VK_OPEN_URL_APP_Terminal</name>
         <url type="file">/Applications/Utilities/Terminal.app</url>
     </vkopenurldef>
@@ -107,7 +112,7 @@
       <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Ya</autogen>
       <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Evernote</autogen>
       <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
-      <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Messages</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Telegram</autogen>
       <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_TweetDeck</autogen>
       <autogen>__KeyToKey__ KeyCode::Y, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Finder</autogen>
 
@@ -117,7 +122,7 @@
       <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Ya</autogen>
       <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Evernote</autogen>
       <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
-      <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Messages</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Telegram</autogen>
       <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_TweetDeck</autogen>
       <autogen>__KeyToKey__ KeyCode::Y, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Finder</autogen>
 

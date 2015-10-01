@@ -7,7 +7,8 @@
   (setq-default
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '()
+   dotspacemacs-configuration-layer-path
+   `(,(concat user-emacs-directory "private/TheBB/"))
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
@@ -17,22 +18,28 @@
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
+     better-defaults
      emacs-lisp
      (auto-completion :variables
-                      auto-completion-enable-help-tooltip t)
+                   auto-completion-return-key-behavior 'complete
+                   auto-completion-tab-key-behavior 'cycle
+                   auto-completion-complete-with-key-sequence nil
+                   auto-completion-enable-help-tooltip t)
      racket
-     ;; git
+     git
      ;; markdown
      ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     (shell :variables
+            shell-default-shell 'eshell
+            shell-default-height 70
+            shell-default-position 'bottom
+            shell-default-term-shell "/bin/bash"
+            shell-enable-smart-eshell t)
      ;; syntax-checking
-     version-control
-     ,@(when (eq system-type 'darwin) '(zeosx))
+     ;; version-control
      themes-megapack
+
+     modify-theme
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -91,12 +98,12 @@ before layers configuration."
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
-   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-emacs-leader-key "C-."
    ;; Major mode leader key is a shortcut key which is the equivalent of
    ;; pressing `<leader> m`. Set it to `nil` to disable it.
    dotspacemacs-major-mode-leader-key ","
    ;; Major mode leader key accessible in `emacs state' and `insert state'
-   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   dotspacemacs-major-mode-emacs-leader-key "C-,"
    ;; The command key used for Evil commands (ex-commands) and
    ;; Emacs commands (M-x).
    ;; By default the command key is `:' so ex-commands are executed like in Vim
@@ -160,16 +167,63 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
-  (setq-default evil-escape-key-sequence "jj")
+  (setq-default
+
+   ;; TODO needs better binding
+   evil-escape-key-sequence "jt"
+
+   modify-theme-modifications
+   `((darktooth
+      ;; (default
+      ;;  ((t (:inherit default :foreground "#D7b78f" :background "#161616"))))
+      (mode-line
+       ((t (:inherit mode-line :weight light :box (:line-width 1 :color "#969896") :height 110 ))))
+      (mode-line-inactive
+       ((t (:inherit mode-line-inactive :weight light :box (:line-width 1 :color "#373b41") :height 110 ))))
+      ))
+   )
+
+  ;; TODO has no effect on `evil' mode: "C-u" remains `evil-scroll-up', "C-_"
+  ;; and "C-?" bound to `undo-tree' cammands
+  (spacemacs|use-package-add-hook undo-tree
+                                  :post-config
+                                  (progn
+                                    (unbind-key "C-/" undo-tree-map)
+                                    (unbind-key "C-?" undo-tree-map)
+                                    (unbind-key "C-_" undo-tree-map)
+                                    (unbind-key "C-_")
+                                    (bind-keys ("C-u"   . undo-tree-undo)
+                                               ("C-S-u" . undo-tree-redo))))
+
+
   )
 
 (defun dotspacemacs/config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  ;; (setq powerline-default-separator 'roundstub)
-  (setq powerline-default-separator 'arrow)
-  (global-company-mode)
+  (setq powerline-default-separator 'bar)
+
+  ;; osx
+  (when (eq system-type 'darwin)
+    (require 'ns-win)
+    (setq mac-command-modifier       'meta
+          mac-right-command-modifier 'left
+          ;; Let OS deal with other modifiers
+          mac-option-modifier        'none
+          mac-right-option-modifier  'none
+          mac-function-modifier      'none)
+
+    (when (executable-find "gls")
+      ;; maybe absolute or relative name of the `ls' program used by
+      ;; `insert-directory'.
+      ;; brew info coreutils
+      (setq insert-directory-program "gls"
+            dired-listing-switches "-aBhl --group-directories-first")))
+
+  ;; git
+  (setq magit-repository-directories '("~/Documents/"))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

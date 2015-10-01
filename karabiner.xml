@@ -97,6 +97,23 @@
     <name>vkz</name>
 
     <item>
+      <name>Better DELETE and RETURN</name>
+      <appendix>6 sends RETURN</appendix>
+      <appendix>7 sends DELETE</appendix>
+      <identifier>private.better_delete_return</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEY_6,
+        KeyCode::RETURN,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEY_7,
+        KeyCode::DELETE,
+      </autogen>
+    </item>
+
+    <item>
       <name>CapsLock and RETURN</name>
       <appendix> CAPSLOCK alone acts as CAPSLOCK. </appendix>
       <appendix> RETURN alone acts as RETURN. </appendix>
@@ -227,14 +244,14 @@
     <item>
       <name>Fix COMMAND_R on MS (crazy)</name>
       <identifier>private.option_r</identifier>
-          <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
-          <autogen>
-            __KeyOverlaidModifier__
-            KeyCode::OPTION_R,
-            KeyCode::SHIFT_R,
-            KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
-            KeyCode::VK_STICKY_SHIFT_R,
-          </autogen>
+      <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::OPTION_R,
+        KeyCode::SHIFT_R,
+        KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+        KeyCode::VK_STICKY_SHIFT_R,
+      </autogen>
     </item>
 
     <item>
