@@ -3,12 +3,12 @@
 
     <vkopenurldef>
         <name>KeyCode::VK_OPEN_URL_APP_emacs</name>
-        <url type="file">/Applications/Emacs.app</url>
+        <url type="file">/Applications/Spacemacs.app</url>
     </vkopenurldef>
 
     <vkopenurldef>
-        <name>KeyCode::VK_OPEN_URL_APP_Ya</name>
-        <url type="file">/Applications/Yandex.app</url>
+        <name>KeyCode::VK_OPEN_URL_APP_Chrome</name>
+        <url type="file">/Applications/Google Chrome.app</url>
     </vkopenurldef>
 
     <vkopenurldef>
@@ -108,22 +108,26 @@
 
       <autogen>__KeyToKey__ KeyCode::H, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Dictionary</autogen>
       <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_emacs</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_emacs</autogen>
       <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
-      <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Ya</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Chrome</autogen>
       <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Evernote</autogen>
       <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
-      <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Telegram</autogen>
-      <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_TweetDeck</autogen>
+      <autogen>__KeyToKey__ KeyCode::DOT, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Preview</autogen>
+      <!-- <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Telegram</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_TweetDeck</autogen> -->
       <autogen>__KeyToKey__ KeyCode::Y, ModifierFlag::CAPSLOCK, KeyCode::VK_OPEN_URL_APP_Finder</autogen>
 
       <autogen>__KeyToKey__ KeyCode::H, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Dictionary</autogen>
       <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_emacs</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_emacs</autogen>
       <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
-      <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Ya</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Chrome</autogen>
       <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Evernote</autogen>
       <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
-      <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Telegram</autogen>
-      <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_TweetDeck</autogen>
+      <autogen>__KeyToKey__ KeyCode::DOT, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Preview</autogen>
+      <!-- <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Telegram</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_TweetDeck</autogen> -->
       <autogen>__KeyToKey__ KeyCode::Y, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Finder</autogen>
 
     </item>

@@ -1,3 +1,6 @@
 [submodule "emacs.d.candidate"]
         path = emacs.d.candidate
         url = https://github.com/vkz/emacs.git
+[submodule "spacemacs-layers"]
+	path = spacemacs-layers
+	url = https://github.com/vkz/spacemacs-layers.git

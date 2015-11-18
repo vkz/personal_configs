@@ -116,37 +116,22 @@
     <item>
       <name>CapsLock and RETURN</name>
       <appendix> CAPSLOCK alone acts as CAPSLOCK. </appendix>
-      <appendix> RETURN alone acts as RETURN. </appendix>
-      <appendix> CAPSLOCK and RETURN with COMMAND act as COMMAND + CONTROL. </appendix>
-      <appendix> RETURN with COMMAND alone remains just that. </appendix>
-      <appendix> With any other key both act as OPTION. </appendix>
+      <appendix> with other keys doubles as Meta</appendix>
       <appendix> ------------------------------------------------ </appendix>
       <appendix> NB CAPSLOCK needs to be remapped to F19 in Seil. </appendix>
       <appendix> NB Set CAPSLOCK to NO ACTION in System Settings. </appendix>
       <appendix> ------------------------------------------------ </appendix>
+      <appendix> ------------------------------------------------ </appendix>
+      <appendix> NB There is physical limitation of the Mac keyboard </appendix>
+      <appendix> NB where CapsLock + SPACE + some keys won't register </appendix>
+      <appendix> NB So faking C-M-f won't work unfortunately  </appendix>
+      <appendix> ------------------------------------------------ </appendix>
       <identifier>private.capslock</identifier>
-      <autogen>
-        __KeyToKey__
-        KeyCode::F19, ModifierFlag::CONTROL_L,
-        KeyCode::COMMAND_L, ModifierFlag::CONTROL_L,
-      </autogen>
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::F19,
-        KeyCode::OPTION_L,
+        KeyCode::COMMAND_L,
         KeyCode::CAPSLOCK,
-      </autogen>
-      <autogen>
-        __KeyOverlaidModifier__
-        KeyCode::RETURN, ModifierFlag::CONTROL_L,
-        KeyCode::COMMAND_L, ModifierFlag::CONTROL_L,
-        KeyCode::RETURN, ModifierFlag::CONTROL_L,
-      </autogen>
-      <autogen>
-        __KeyOverlaidModifier__
-        KeyCode::RETURN,
-        KeyCode::OPTION_R,
-        KeyCode::RETURN,
       </autogen>
     </item>
 
@@ -219,7 +204,7 @@
       </block>
     </item>
 
-    <include path="{{ ENV_HOME }}/.personal_configs/vm.xml" />
+    <include path="{{ ENV_HOME }}/.personal-configs/vm.xml" />
 
     <item>
       <name>Overlaid Comma</name>
@@ -265,9 +250,9 @@
       </autogen>
     </item>
 
-    <include path="{{ ENV_HOME }}/.personal_configs/emacs-global.xml" />
-    <!-- <include path="{{ ENV_HOME }}/.personal_configs/numbers.xml" /> -->
-    <include path="{{ ENV_HOME }}/.personal_configs/vkz-launcher.xml" />
+    <include path="{{ ENV_HOME }}/.personal-configs/emacs-global.xml" />
+    <!-- <include path="{{ ENV_HOME }}/.personal-configs/numbers.xml" /> -->
+    <include path="{{ ENV_HOME }}/.personal-configs/vkz-launcher.xml" />
 
   </item>
 

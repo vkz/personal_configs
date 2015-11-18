@@ -62,14 +62,6 @@
       <not>EMACS, FINDER, WIN7</not>
 
       <autogen>
-        <!-- C-g send ESC -->
-        <!-- [osx::C-g] == [raw::C-U] to [raw::ESCAPE] == [osx::Esc] -->
-        --KeyToKey--
-        KeyCode::U, ModifierFlag::CONTROL_L,
-        KeyCode::ESCAPE
-      </autogen>
-
-      <autogen>
         <!-- C-s find -->
         <!-- [osx::C-s] == [raw::C-;] to [raw::CMD-y] == [osx::CMD-f] -->
         --KeyToKey--
