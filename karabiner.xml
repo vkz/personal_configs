@@ -250,9 +250,30 @@
       </autogen>
     </item>
 
+    <item>
+      <name>Chrome: tabs and windows, close tabs</name>
+      <identifier>private.chorme_switching</identifier>
+      <only>GOOGLE_CHROME</only>
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, ModifierFlag::COMMAND_L,
+        KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L,
+      </autogen>
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, ModifierFlag::CONTROL_L,
+        KeyCode::TAB, ModifierFlag::CONTROL_L,
+      </autogen>
+
+    </item>
+
+
     <include path="{{ ENV_HOME }}/.personal-configs/emacs-global.xml" />
     <!-- <include path="{{ ENV_HOME }}/.personal-configs/numbers.xml" /> -->
     <include path="{{ ENV_HOME }}/.personal-configs/vkz-launcher.xml" />
+
 
   </item>
 
