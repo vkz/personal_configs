@@ -26,7 +26,7 @@ values."
      clojure
      (auto-completion :variables
                       auto-completion-return-key-behavior nil
-                      auto-completion-tab-key-behavior 'cycle
+                      auto-completion-tab-key-behavior nil
                       auto-completion-enable-sort-by-usage t
                       :disabled-for org erc)
      ;; better-defaults
@@ -45,6 +45,8 @@ values."
      ;; spell-checking
      ;; syntax-checking
      themes-megapack
+     theming
+     colors
      version-control
      sexy
      )
@@ -120,7 +122,7 @@ values."
    dotspacemacs-major-mode-leader-key ","
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
    ;; (default "C-M-m)
-   dotspacemacs-major-mode-emacs-leader-key "C-t C-m"
+   dotspacemacs-major-mode-emacs-leader-key "C-c"
    ;; The command key used for Evil commands (ex-commands) and
    ;; Emacs commands (M-x).
    ;; By default the command key is `:' so ex-commands are executed like in Vim
@@ -179,7 +181,7 @@ values."
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
@@ -215,6 +217,15 @@ user code."
    git-magit-status-fullscreen t
    magit-repository-directories '("~/Documents/")
 
+   theming-modifications
+   `((darktooth (default :inherit default :foreground "#D7b78f" :background "#161616")
+                (fringe :inherit fringe :background "#161616")
+                (mode-line :inherit mode-line :weight light :box (:line-width 1 :color "#969896") :height 100)
+                (mode-line-inactive :inherit mode-line-inactive :weight light :box (:line-width 1 :color "#373b41") :height 100)
+                (widget-button :inherit widget-button :weight light)
+                (mode-line-buffer-id :inherit mode-line-buffer-id :weight light)
+                (region :background "#8F621D" :inverse-video nil)))
+
    ;; don't wrap lines ever 
    truncate-lines t
    helm-truncate-lines t
@@ -222,48 +233,95 @@ user code."
    ;; (delete-selection-mode -1)
    )
   ;; so that haskell-stack binaries are picked up
-  (add-to-list 'exec-path "~/.local/bin/")
-  )
+  (add-to-list 'exec-path "~/.local/bin/"))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
-  ;; (setq-default evil-escape-key-sequence "jh")
+  (setq mac-command-modifier 'meta)
+  ;; (setq mac-option-modifier 'super)
+  (setq mac-option-modifier nil)
 
-  (global-set-key (kbd "C-.") 'set-mark-command)
-  (global-set-key (kbd "C-<tab>") 'other-window)
+  ;; Make buffer status more visible
+  (spaceline-define-segment buffer-modified
+    "Buffer modified marker."
+    (cond (buffer-read-only
+           (propertize "RO" 'face '(:foreground "#4271ae")))
+          ((buffer-modified-p)
+           (propertize "MO" 'face '(:foreground "#c82829" :background "#ffffff")))
+          (t "--")))
+
+  (setq-default
+   powerline-default-separator 'alternate)
+
+  (defun ze-alternate-buffer ()
+    "Alternate between current buffer and most recently visited.
+Prefer buffers that aren't visible in any windows."
+    (interactive)
+    (switch-to-buffer (other-buffer (current-buffer) nil)))
+
+  ;; Bindings
   (define-key input-decode-map [?\C-i] (kbd "<C-i>"))
-  (define-key isearch-mode-map (kbd "C-s") 'helm-swoop-from-isearch)
+  (define-key input-decode-map [?\C-\S-i] (kbd "<C-I>"))
 
-  ;; (evil-leader/set-key "C-m" 'major-mode-)
+  (bind-keys
+   ("<C-i>" . (lambda () (interactive)
+                (if (= (count-windows) 1)
+                    (progn (split-window-right-and-focus)
+                           (call-interactively 'spacemacs/helm-find-files))
+                  (other-window 1))))
+   ("C-c i". helm-semantic-or-imenu)
+   ("C-u" . undo-tree-undo)
+   ("C-S-u" . undo-tree-redo)
+   ("C-h" . er/expand-region)
+   ("C-." . set-mark-command)
+   ("C-:" . helm-M-x)
+   ("C-t C-s" . spacemacs/write-file)
+   ("C-c C-e" . eval-last-sexp))
 
-  ;; (evil-leader/set-key
-  ;;   "(" '(lambda ()
-  ;;         (interactive)
-  ;;         (lispy-forward 1)
-  ;;         (lispy-backward 1)
-  ;;         (evil-insert 1)))
+  (evil-leader/set-key
+    "C-s" 'spacemacs/write-file
+    "C-f" 'spacemacs/helm-find-files
+    "C-b" 'helm-mini
+    "<C-i>" 'ze-alternate-buffer)
 
-  ;; (evil-leader/set-key
-  ;;   "(" (lookup-key evil-leader--default-map "k"))
-
-  ;; lispy
-  ;; (add-hook 'evil-hybrid-state-entry-hook
-  ;;           (lambda ()
-  ;;             (when (or
-  ;;                    (string= major-mode "emacs-lisp-mode")
-  ;;                    (string= major-mode "clojure-mode")
-  ;;                    (string= major-mode "racket-mode")
-  ;;                    (string= major-mode "cider-repl-mode"))
-  ;;               (lispy-mode 1))))
-  ;; (add-hook 'evil-hybrid-state-exit-hook
-  ;;           (lambda () (lispy-mode 0)))
+  ;; Add (c)opy to expand-region
+  (defadvice er/prepare-for-more-expansions-internal
+      (around ze/prepare-for-more-expansions activate)
+    ad-do-it
+    (let ((new-msg (concat (car ad-return-value)
+                           ", c to copy as kill"))
+          (new-bindings (cdr ad-return-value)))
+      (cl-pushnew
+       '("c" (lambda ()
+               (call-interactively
+                'kill-ring-save)))
+       new-bindings)
+      (setq ad-return-value (cons new-msg new-bindings))))
+  (setq expand-region-contract-fast-key "H"
+        expand-region-reset-fast-key "r")
 
   (with-eval-after-load 'helm
-    (define-key helm-map (kbd "C-.") 'helm-toggle-visible-mark)
-    (define-key helm-map (kbd "M-h") 'spacemacs/helm-navigation-micro-state)))
+    (bind-key*  "C-:" 'helm-M-x)
+    (setq helm-apropos-fuzzy-match nil
+          helm-M-x-fuzzy-match nil)
+    (define-key helm-map (kbd "C-.") 'helm-toggle-visible-mark))
+
+  (with-eval-after-load 'helm-files
+    (define-key helm-find-files-map (kbd "C-.") 'helm-toggle-visible-mark))
+
+  (with-eval-after-load 'cider
+    (bind-keys :map cider-mode-map
+               ("C-c C-r" . cider-switch-to-repl-buffer))
+    (bind-keys :map cider-repl-mode-map
+               ("C-c C-r" . cider-switch-to-last-clojure-buffer)))
+
+  (use-package multiple-cursors
+    :bind (( "C->" . mc/mark-next-like-this)
+           ("C-<" . mc/mark-previous-like-this)
+           ("C-c C-<" . mc/mark-all-like-this))))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -272,7 +330,8 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(nrepl-hide-special-buffers t))
+ '(nrepl-hide-special-buffers t)
+ '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -280,4 +339,10 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(default ((t (:foreground "#FDF4C1" :background "#282828"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(fringe ((t (:inherit fringe :background "#161616"))))
+ '(mode-line ((t (:inherit mode-line :weight light :box (:line-width 1 :color "#969896") :height 100))))
+ '(mode-line-buffer-id ((t (:inherit mode-line-buffer-id :weight light))))
+ '(mode-line-inactive ((t (:inherit mode-line-inactive :weight light :box (:line-width 1 :color "#373b41") :height 100))))
+ '(region ((t (:background "#8F621D" :inverse-video nil))))
+ '(widget-button ((t (:inherit widget-button :weight light)))))
