@@ -116,7 +116,7 @@
     <item>
       <name>CapsLock and RETURN</name>
       <appendix> CAPSLOCK alone acts as CAPSLOCK. </appendix>
-      <appendix> with other keys doubles as Meta</appendix>
+      <appendix> with other keys doubles as Option</appendix>
       <appendix> ------------------------------------------------ </appendix>
       <appendix> NB CAPSLOCK needs to be remapped to F19 in Seil. </appendix>
       <appendix> NB Set CAPSLOCK to NO ACTION in System Settings. </appendix>
@@ -130,9 +130,131 @@
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::F19,
-        KeyCode::COMMAND_L,
+        KeyCode::OPTION_L,
         KeyCode::CAPSLOCK,
       </autogen>
+    </item>
+
+
+    <item>
+      <name>Numeric keypad with Fn</name>
+      <appendix>Overlay 1234567890 under right-hand</appendix>
+      <identifier>private.fn_numbers</identifier>
+      <!-- <autogen>__KeyToKey__ KeyCode::KEY_9, KeyCode::MINUS</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::KEY_0, KeyCode::EQUAL</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::U, KeyCode::KEY_1</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::I, KeyCode::KEY_2</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::O, KeyCode::KEY_3</autogen> -->
+      <!-- Home row: 1, 2, 3 -->
+      <autogen>__KeyToKey__ KeyCode::J, ModifierFlag::FN, KeyCode::M, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::FN, KeyCode::COMMA, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::FN, KeyCode::DOT, ModifierFlag::OPTION_L</autogen>
+      <!-- Home row + 1 up: 4, 5, 6 -->
+      <autogen>__KeyToKey__ KeyCode::U, ModifierFlag::FN, KeyCode::J, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::I, ModifierFlag::FN, KeyCode::K, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::O, ModifierFlag::FN, KeyCode::L, ModifierFlag::OPTION_L</autogen>
+
+      <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::FN, KeyCode::U, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::FN, KeyCode::I, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::FN, KeyCode::O, ModifierFlag::OPTION_L</autogen>
+      <!-- <autogen>__KeyToKey__ KeyCode::K, KeyCode::KEY_5</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::L, KeyCode::KEY_6</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::M, KeyCode::KEY_7</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::N, KeyCode::KEY_7</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::COMMA, KeyCode::KEY_8</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::DOT, KeyCode::KEY_9</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::H, KeyCode::KEY_0</autogen> -->
+    </item>
+
+    <item>
+      <name>Command - Space or Shift - Control</name>
+      <identifier>private.spaceshift</identifier>
+      <appendix>Command - Space or Shift - Control</appendix>
+
+      <block>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::OPTION_L,
+          KeyCode::OPTION_L,
+          KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+          KeyCode::VK_STICKY_OPTION_L,
+        </autogen>
+      </block>
+
+
+      <block>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_L,
+          KeyCode::COMMAND_L,
+          KeyCode::N, ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L,
+          <!-- KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON, -->
+          <!-- KeyCode::VK_STICKY_CONTROL_L, -->
+        </autogen>
+      </block>
+
+      <block>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::SPACE,
+          KeyCode::SHIFT_L,
+          KeyCode::SPACE
+        </autogen>
+      </block>
+
+      <block>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_R,
+          KeyCode::CONTROL_L,
+          KeyCode::Y, ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L,
+          <!-- KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON, -->
+          <!-- KeyCode::VK_STICKY_CONTROL_L, -->
+        </autogen>
+      </block>
+
+      <block>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::OPTION_R,
+          KeyCode::OPTION_R,
+          KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+          KeyCode::VK_STICKY_OPTION_R,
+        </autogen>
+      </block>
+
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SHIFT_L,
+        KeyCode::COMMAND_R,
+        KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+        KeyCode::VK_STICKY_COMMAND_R,
+      </autogen>
+
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SHIFT_R,
+        KeyCode::CONTROL_R,
+        KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+        KeyCode::VK_STICKY_CONTROL_R,
+      </autogen>
+
+      <block>
+        <device_only>DeviceVendor::MS, DeviceProduct::MS_KEYBOARD</device_only>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::PC_APPLICATION,
+          KeyCode::OPTION_L,
+          KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+          KeyCode::VK_STICKY_OPTION_L,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::OPTION_R,
+          KeyCode::CONTROL_L
+        </autogen>
+      </block>
+
     </item>
 
     <item>
