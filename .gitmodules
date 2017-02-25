@@ -4,3 +4,6 @@
 [submodule "spacemacs-layers"]
 	path = spacemacs-layers
 	url = https://github.com/vkz/spacemacs-layers.git
+[submodule "oh-my-zsh"]
+	path = oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
