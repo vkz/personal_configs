@@ -1,6 +1,25 @@
 <?xml version="1.0"?>
 <root>
 
+  <!-- <windownamedef> -->
+  <!--   <name>Chrome_Slack</name> -->
+  <!--   <regex>Slack$</regex> -->
+  <!-- </windownamedef> -->
+  
+  <!-- <item> -->
+  <!--   <name>Only in Chrome Slack Window</name> -->
+  <!--   <identifier>private.chrome_slack</identifier> -->
+  <!--   <only>GOOGLE_CHROME</only> -->
+
+  <!--   <windowname_only>Chrome_Slack</windowname_only> -->
+
+  <!--   <autogen> -->
+  <!--     __KeyToKey__ -->
+  <!--     KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, -->
+  <!--     KeyCode::V, ModifierFlag::COMMAND_L, -->
+  <!--   </autogen> -->
+  <!-- </item> -->
+  
     <vkopenurldef>
         <name>KeyCode::VK_OPEN_URL_APP_hipchat</name>
         <url type="file">/Applications/HipChat.app</url>
