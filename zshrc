@@ -103,3 +103,10 @@ unset RACKET
 # Editor
 export alternate_editor='open -a Emacs.app ' EDITOR=emacsclient VISUAL=emacsclient
 alias e='emacsclient -n '
+
+# gnupg
+# https://github.com/pstadler/keybase-gpg-github/issues/11
+export GPG_TTY=$(tty)
+
+# ruby
+eval "$(rbenv init -)"

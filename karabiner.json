@@ -1,0 +1,20 @@
+{
+  "profiles": [
+    {
+      "devices": [],
+      "name": "Default profile",
+      "selected": true,
+      "simple_modifications": {
+        "spacebar": "left_shift",
+        "right_command": "left_control",
+        "caps_lock": "left_option",
+        "left_shift": "right_command",
+        "right_shift": "right_control"
+      },
+      "standalone_keys": {
+        "spacebar": "spacebar",
+        "caps_lock": "caps_lock"
+      }
+    }
+  ]
+}
